@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cliptboard Content Editor</title>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <h1>Cliptboard Content Editor</h1>
+    <p>Author: Fauzan January</p>
+    <p>This NVDA add-on lets you edit the current clipboard text in a simple dialog before pasting it elsewhere. It also provides quick actions to read the clipboard, show information, and find/replace text.</p>
+
+    <h2>Features</h2>
+    <ul>
+      <li>Edit the current clipboard text in a multiline editor.</li>
+      <li>Clear clipboard content with a single button.</li>
+      <li>Read clipboard text or selected text in the editor.</li>
+      <li>Show information (characters, words, lines) about clipboard text.</li>
+      <li>Find and replace inside the editor.</li>
+      <li>Optional clipboard backup (protect mode) with restore.</li>
+      <li>Global shortcuts for Read and Information.</li>
+    </ul>
+
+    <h2>How to use</h2>
+    <ol>
+      <li>Press <code>Ctrl+Alt+C</code> to open the editor.</li>
+      <li>Edit the text as needed.</li>
+      <li>Use the buttons or shortcuts for Read, Information, Find/Replace, Clear, Save, or Cancel.</li>
+      <li>Press Save to update the clipboard with the edited content.</li>
+    </ol>
+
+    <h2>Shortcuts</h2>
+    <p>Global shortcuts (work anywhere in NVDA):</p>
+    <ul>
+      <li><code>Ctrl+Alt+C</code> - Open the clipboard editor.</li>
+      <li><code>Alt+R</code> - Read clipboard text.</li>
+      <li><code>Alt+I</code> - Show information about clipboard text.</li>
+      <li><code>Ctrl+Shift+Z</code> - Restore previous clipboard content (protect mode).</li>
+    </ul>
+
+    <p>Editor shortcuts:</p>
+    <ul>
+      <li><code>Alt+C</code> - Clear clipboard content.</li>
+      <li><code>Alt+R</code> - Read selection or full text in the editor.</li>
+      <li><code>Alt+I</code> - Show information about the editor text.</li>
+      <li><code>Alt+F</code> - Find/Replace.</li>
+      <li><code>Alt+S</code> - Save changes.</li>
+      <li><code>Esc</code> - Cancel.</li>
+    </ul>
+
+    <p>If the clipboard is empty, Read and Information will announce "clipboard is empty".</p>
+
+    <h2>Settings</h2>
+    <p>Open NVDA Settings and select the add-on category:</p>
+    <ul>
+      <li>Keep shortcuts active when buttons are hidden in editor (default: enabled).</li>
+      <li>Enable Clear button in editor.</li>
+      <li>Enable Read button in editor.</li>
+      <li>Enable Information button in editor.</li>
+      <li>Enable Find/Replace button in editor.</li>
+      <li>Enable protect mode (clipboard backup).</li>
+      <li>Number of backup levels.</li>
+    </ul>
+
+    <h2>Protect mode (clipboard backup)</h2>
+    <p>When protect mode is enabled, the add-on stores a history of clipboard content before saving. You can restore the previous clipboard content using <code>Ctrl+Shift+Z</code>. The number of saved backups is controlled by "Number of backup levels".</p>
+
+    <h2>Notes</h2>
+    <ul>
+      <li>Clearing and saving will store an empty clipboard if you choose to save it.</li>
+      <li>Find/Replace supports match case and replaces within the editor text only.</li>
+    </ul>
+
+    <h2>License</h2>
+    <p>This add-on is released under the GNU General Public License version 2 (GPL v2).</p>
+
+    <h2>Support development</h2>
+    <p>If you want to support development, you can donate:</p>
+    <ul>
+      <li>
+        Credit card: 106529506491 (Name: Fauzan)
+        <button type="button" onclick="copyDonationCardNumber()">Copy card number</button>
+      </li>
+      <li>Please visit the following page for other donation methods (Indonesia only): <a href="https://fauzanaja.com/berikan-dukungan/">https://fauzanaja.com/berikan-dukungan/</a></li>
+    </ul>
+    <script>
+      function copyDonationCardNumber() {
+        var text = "106529506491";
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            alert("Card number copied to clipboard.");
+          }, function () {
+            alert("Unable to copy the card number right now.");
+          });
+          return;
+        }
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "absolute";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand("copy");
+          alert("Card number copied to clipboard.");
+        } catch (e) {
+          alert("Unable to copy the card number right now.");
+        }
+        document.body.removeChild(ta);
+      }
+    </script>
+
+    <h2>Contact</h2>
+    <ul>
+      <li>Email: <a href="mailto:surel@fauzanaja.com">surel@fauzanaja.com</a></li>
+      <li>GitHub: <a href="https://github.com/fauzan-january/">https://github.com/fauzan-january/</a></li>
+      <li>Website: <a href="https://fauzanaja.com/">https://fauzanaja.com/</a></li>
+    </ul>
+  </body>
+</html>

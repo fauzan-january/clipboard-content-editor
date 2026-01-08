@@ -1,0 +1,172 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ClipboardContentEditor 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-03 00:00+0000\n"
+"PO-Revision-Date: 2026-01-03 00:00+0000\n"
+"Last-Translator: Fauzan January\n"
+"Language-Team: Indonesian\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Clipboard Content Editor - Donation"
+msgstr "Clipboard Content Editor - Donasi"
+
+msgid "Thank you for using Clipboard Content Editor."
+msgstr "Terima kasih telah menggunakan Clipboard Content Editor."
+
+msgid "If you would like to support development, you can donate using:"
+msgstr "Jika Anda ingin mendukung pengembangan, Anda bisa berdonasi melalui:"
+
+msgid "Credit card: {number}"
+msgstr "Kartu kredit: {number}"
+
+msgid "Name: {name}"
+msgstr "Atas nama: {name}"
+
+msgid "Other methods (Indonesia):"
+msgstr "Metode lain (Indonesia):"
+
+msgid "Open donation &page"
+msgstr "Buka halaman &donasi"
+
+msgid "&Copy card number"
+msgstr "&Salin nomor kartu"
+
+msgid "&Continue Installation"
+msgstr "&Lanjutkan instalasi"
+
+msgid "Unable to open the donation page right now."
+msgstr "Tidak dapat membuka halaman donasi saat ini."
+
+msgid "Donation"
+msgstr "Donasi"
+
+msgid "Card number copied to clipboard."
+msgstr "Nomor kartu disalin ke clipboard."
+
+msgid "Unable to copy the card number right now."
+msgstr "Tidak dapat menyalin nomor kartu saat ini."
+
+msgid "Information: {chars} characters, {words} words, {lines} lines"
+msgstr "Informasi: {chars} karakter, {words} kata, {lines} baris"
+
+msgid "Clipboard is empty"
+msgstr "Clipboard kosong"
+
+msgid "Clipboard Content Editor"
+msgstr "Clipboard Content Editor"
+
+msgid "Clipboard content:"
+msgstr "Isi clipboard:"
+
+msgid "&Clear"
+msgstr "&Bersihkan"
+
+msgid "&Read"
+msgstr "&Baca"
+
+msgid "&Information"
+msgstr "&Informasi"
+
+msgid "&Find/Replace"
+msgstr "&Cari/Ganti"
+
+msgid "&Save"
+msgstr "&Simpan"
+
+msgid "Cancel"
+msgstr "Batal"
+
+msgid "Failed to clear clipboard"
+msgstr "Gagal mengosongkan clipboard"
+
+msgid "Clipboard cleared"
+msgstr "Clipboard dikosongkan"
+
+msgid "Clipboard updated"
+msgstr "Clipboard diperbarui"
+
+msgid "Failed to update clipboard"
+msgstr "Gagal memperbarui clipboard"
+
+msgid "Changes canceled"
+msgstr "Perubahan dibatalkan"
+
+msgid "You have unsaved changes. Discard them?"
+msgstr "Anda memiliki perubahan yang belum disimpan. Buang perubahan ini?"
+
+msgid "Opens a clipboard editor to modify the current clipboard text."
+msgstr "Membuka editor clipboard untuk mengubah teks clipboard saat ini."
+
+msgid "Reads the current clipboard text."
+msgstr "Membaca teks clipboard saat ini."
+
+msgid "Shows information about the current clipboard text."
+msgstr "Menampilkan informasi tentang teks clipboard saat ini."
+
+msgid "Restores the previous clipboard content from backup."
+msgstr "Memulihkan isi clipboard sebelumnya dari cadangan."
+
+msgid "Protect mode is disabled"
+msgstr "Mode proteksi dinonaktifkan"
+
+msgid "No backup available"
+msgstr "Tidak ada cadangan"
+
+msgid "Previous clipboard restored"
+msgstr "Clipboard sebelumnya dipulihkan"
+
+msgid "Failed to restore clipboard"
+msgstr "Gagal memulihkan clipboard"
+
+msgid "Find/Replace"
+msgstr "Cari/Ganti"
+
+msgid "Find"
+msgstr "Cari"
+
+msgid "Replace"
+msgstr "Ganti"
+
+msgid "Match case"
+msgstr "Cocokkan huruf besar/kecil"
+
+msgid "Find next"
+msgstr "Cari berikutnya"
+
+msgid "Replace all"
+msgstr "Ganti semua"
+
+msgid "Find text is empty"
+msgstr "Teks pencarian kosong"
+
+msgid "Text not found"
+msgstr "Teks tidak ditemukan"
+
+msgid "{count} replacements"
+msgstr "{count} penggantian"
+
+msgid "Keep shortcuts active when buttons are hidden in editor"
+msgstr "Tetap aktifkan shortcut saat tombol disembunyikan di editor"
+
+msgid "Enable &clear button in editor"
+msgstr "Aktifkan tombol &bersihkan di editor"
+
+msgid "Enable &read button in editor"
+msgstr "Aktifkan tombol &baca di editor"
+
+msgid "Enable &information button in editor"
+msgstr "Aktifkan tombol &informasi di editor"
+
+msgid "Enable &find/replace button in editor"
+msgstr "Aktifkan tombol &cari/ganti di editor"
+
+msgid "Enable &protect mode (clipboard backup)"
+msgstr "Aktifkan mode &proteksi (cadangan clipboard)"
+
+msgid "Number of backup &levels"
+msgstr "Jumlah &level cadangan"
+

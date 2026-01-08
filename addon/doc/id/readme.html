@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <title>Cliptboard Content Editor</title>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <h1>Cliptboard Content Editor</h1>
+    <p>Penulis: Fauzan January</p>
+    <p>Add-on NVDA ini membantu Anda mengedit teks clipboard saat ini melalui dialog sederhana sebelum ditempelkan ke aplikasi lain. Add-on ini juga menyediakan aksi cepat untuk membaca clipboard, menampilkan informasi, serta find/replace.</p>
+
+    <h2>Fitur</h2>
+    <ul>
+      <li>Mengedit teks clipboard pada editor multiline.</li>
+      <li>Mengosongkan clipboard dengan satu tombol.</li>
+      <li>Membaca teks clipboard atau teks terpilih di editor.</li>
+      <li>Menampilkan informasi (jumlah karakter, kata, dan baris) dari teks clipboard.</li>
+      <li>Find/Replace di dalam editor.</li>
+      <li>Cadangan clipboard (protect mode) dan pemulihan.</li>
+      <li>Shortcut global untuk Read dan Information.</li>
+    </ul>
+
+    <h2>Cara pakai</h2>
+    <ol>
+      <li>Tekan <code>Ctrl+Alt+C</code> untuk membuka editor.</li>
+      <li>Edit teks sesuai kebutuhan.</li>
+      <li>Gunakan tombol atau shortcut untuk Read, Information, Find/Replace, Clear, Save, atau Cancel.</li>
+      <li>Tekan Save untuk menyimpan hasil ke clipboard.</li>
+    </ol>
+
+    <h2>Shortcut</h2>
+    <p>Shortcut global (bisa dipakai di mana saja):</p>
+    <ul>
+      <li><code>Ctrl+Alt+C</code> - Buka editor clipboard.</li>
+      <li><code>Alt+R</code> - Read isi clipboard.</li>
+      <li><code>Alt+I</code> - Informasi isi clipboard.</li>
+      <li><code>Ctrl+Shift+Z</code> - Pulihkan clipboard dari cadangan (protect mode).</li>
+    </ul>
+
+    <p>Shortcut di dialog editor:</p>
+    <ul>
+      <li><code>Alt+C</code> - Clear isi clipboard.</li>
+      <li><code>Alt+R</code> - Read teks terpilih atau seluruh teks di editor.</li>
+      <li><code>Alt+I</code> - Information untuk teks editor.</li>
+      <li><code>Alt+F</code> - Find/Replace.</li>
+      <li><code>Alt+S</code> - Save perubahan.</li>
+      <li><code>Esc</code> - Cancel.</li>
+    </ul>
+
+    <p>Jika clipboard kosong, Read dan Information akan mengumumkan "clipboard is empty".</p>
+
+    <h2>Pengaturan</h2>
+    <p>Buka NVDA Settings dan pilih kategori add-on:</p>
+    <ul>
+      <li>Keep shortcuts active when buttons are hidden in editor (default: enabled).</li>
+      <li>Enable Clear button in editor.</li>
+      <li>Enable Read button in editor.</li>
+      <li>Enable Information button in editor.</li>
+      <li>Enable Find/Replace button in editor.</li>
+      <li>Enable protect mode (clipboard backup).</li>
+      <li>Number of backup levels.</li>
+    </ul>
+
+    <h2>Protect mode (cadangan clipboard)</h2>
+    <p>Saat protect mode aktif, add-on menyimpan riwayat isi clipboard sebelum disimpan. Anda bisa memulihkan isi clipboard sebelumnya dengan <code>Ctrl+Shift+Z</code>. Jumlah cadangan yang disimpan diatur oleh "Number of backup levels".</p>
+
+    <h2>Catatan</h2>
+    <ul>
+      <li>Jika Anda Clear lalu Save, clipboard akan tersimpan kosong.</li>
+      <li>Find/Replace mendukung match case dan hanya mengganti di teks editor.</li>
+    </ul>
+
+    <h2>Lisensi</h2>
+    <p>Add-on ini dirilis dengan lisensi GNU General Public License versi 2 (GPL v2).</p>
+
+    <h2>Dukungan pengembangan</h2>
+    <p>Jika ingin mendukung pengembangan, Anda bisa berdonasi:</p>
+    <ul>
+      <li>
+        Kartu kredit: 106529506491 (Atas nama: Fauzan)
+        <button type="button" onclick="copyDonationCardNumber()">Salin nomor kartu</button>
+      </li>
+      <li>Silakan kunjungi halaman berikut untuk metode donasi lainnya (khusus Indonesia): <a href="https://fauzanaja.com/berikan-dukungan/">https://fauzanaja.com/berikan-dukungan/</a></li>
+    </ul>
+    <script>
+      function copyDonationCardNumber() {
+        var text = "106529506491";
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            alert("Nomor kartu disalin ke clipboard.");
+          }, function () {
+            alert("Tidak dapat menyalin nomor kartu saat ini.");
+          });
+          return;
+        }
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "absolute";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand("copy");
+          alert("Nomor kartu disalin ke clipboard.");
+        } catch (e) {
+          alert("Tidak dapat menyalin nomor kartu saat ini.");
+        }
+        document.body.removeChild(ta);
+      }
+    </script>
+
+    <h2>Kontak</h2>
+    <ul>
+      <li>Surel: <a href="mailto:surel@fauzanaja.com">surel@fauzanaja.com</a></li>
+      <li>GitHub: <a href="https://github.com/fauzan-january/">https://github.com/fauzan-january/</a></li>
+      <li>Situs web: <a href="https://fauzanaja.com/">https://fauzanaja.com/</a></li>
+    </ul>
+  </body>
+</html>
