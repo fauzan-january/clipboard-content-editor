@@ -80,5 +80,5 @@ This add-on is released under the GNU General Public License version 2 (GPL v2).
 ## Contact
 
 - Email: [surel@fauzanaja.com](mailto:surel@fauzanaja.com)
-- GitHub: [https://t.me/fauzan_january/](fauzan_january/)
-- Website: [https://fauzanaja.com/](fauzanaja.com/)
+- Telegram: [fauzan_january/](https://t.me/fauzan_january/)
+- Website: [fauzanaja.com/](https://fauzanaja.com/)
