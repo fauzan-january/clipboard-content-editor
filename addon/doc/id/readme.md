@@ -80,5 +80,5 @@ Add-on ini dirilis dengan lisensi GNU General Public License versi 2 (GPL v2).
 ## Kontak
 
 - Surel: [surel@fauzanaja.com](mailto:surel@fauzanaja.com)
-- GitHub: [https://github.com/fauzan-january/](https://github.com/fauzan-january/)
-- Situs web: [https://fauzanaja.com/](https://fauzanaja.com/)
+- GitHub: [https://t.me/fauzan_january/](fauzan_january/)
+- Situs web: [https://fauzanaja.com/](fauzanaja.com/)
