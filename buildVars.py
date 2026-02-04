@@ -12,31 +12,21 @@ addon_info = AddonInfo(
 	# Translators: Long description for this add-on
 	addon_description=_(
 		"Edits the current clipboard text in a simple editor so pasted content reflects the changes. "
-		"Shortcuts: NVDA+E opens the editor, NVDA+Z restores the previous clipboard."
+		"Shortcuts: NVDA+E opens the editor, NVDA+Z restores the previous clipboard, and NVDA+I shows clipboard info."
 	),
-	addon_version="1.1.0",
+	addon_version="1.2.1",
 	# Translators: What's new content for the add-on version
 	addon_changelog=_(
-		"- Global shortcuts are now standardized: NVDA+E opens the editor dialog, "
-		"NVDA+Z restores clipboard backups, and NVDA+I announces clipboard "
-		"character/word/line counts.\n"
-		"- Global shortcuts can now be reassigned via NVDA Input Gestures.\n"
-		"- The Clear feature has been removed entirely (button, shortcut, settings, "
-		"and notifications) because you can clear text directly in the clipboard editor.\n"
-		"- The Read feature has been removed entirely (button, shortcut, settings, "
-		"and notifications) because NVDA already provides clipboard reading via NVDA+C.\n"
-		"- A Find button was added before Replace, with separate enable/disable options "
-		"and updated shortcuts (Alt+F for Find, Alt+R for Replace).\n"
-		"- Replace now preserves case by default, matching the capitalization of the "
-		"found text.\n"
-		"- Checkbox labels were updated to \"Case sensitive\" and "
-		"\"Find/Replace whole words only, not part of other words\".\n"
-		"- The clipboard info message now reads \"Clipboard information: ...\".\n"
-		"- Documentation now includes links to other available languages.\n"
-		"- What's New information is now available in both the documentation and "
-		"the installation dialog.\n"
-		"- Development support information has been removed from the documentation and "
-		"the installation dialog."
+		"- Added **Save As** feature (Ctrl+Shift+S) to the editor, allowing content "
+		"to be saved as .txt or other file types.\n"
+		"- Added a setting to enable or disable addon sounds.\n"
+		"- Added comprehensive sound feedback to Information, Restore Backup, and "
+		"Replace All features for consistent audio cues.\n"
+		"- Fixed the \"Read in [Language]\" links in the documentation to correctly "
+		"open the HTML files instead of showing file not found errors or opening raw "
+		"source files.\n"
+		"- The editor buttons are now strictly ordered for better navigation: "
+		"Information -> Find -> Replace -> Save -> Save As -> Cancel."
 	),
 	addon_author="Fauzan January <surel@fauzanaja.com>",
 	addon_url="https://fauzanaja.com/nvda-addon/",

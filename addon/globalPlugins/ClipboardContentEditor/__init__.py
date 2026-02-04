@@ -8,7 +8,7 @@ import globalPluginHandler
 import gui
 from gui import guiHelper
 from gui.settingsDialogs import SettingsPanel, NVDASettingsDialog
-import core
+
 import config
 import tones
 import ui
@@ -26,6 +26,7 @@ confspec = {
 	"findButtonEnabled": "boolean(default=True)",
 	"findReplaceButtonEnabled": "boolean(default=True)",
 	"shortcutsWhenHiddenEnabled": "boolean(default=True)",
+	"soundEnabled": "boolean(default=True)",
 }
 config.conf.spec["ClipboardContentEditor"] = confspec
 
@@ -39,6 +40,11 @@ def _buildInformationMessage(text):
 		words=wordCount,
 		lines=lineCount,
 	)
+
+
+def _playSound(hz, duration):
+	if config.conf["ClipboardContentEditor"]["soundEnabled"]:
+		tones.beep(hz, duration)
 
 
 def _announceClipboardEmpty():
@@ -208,7 +214,7 @@ class ClipboardEditorDialog(wx.Dialog):
 		textSizer.Add(self._textCtrl, proportion=1, flag=wx.EXPAND)
 		mainSizer.Add(textSizer, proportion=1, flag=wx.ALL | wx.EXPAND, border=8)
 
-		buttonSizer = wx.StdDialogButtonSizer()
+		buttonSizer = wx.BoxSizer(wx.HORIZONTAL)
 		self._informationMenuId = wx.NewIdRef()
 		self._findMenuId = wx.NewIdRef()
 		self._replaceMenuId = wx.NewIdRef()
@@ -218,19 +224,21 @@ class ClipboardEditorDialog(wx.Dialog):
 				id=self._informationMenuId,
 				label=_("&Information"),
 			)
-			buttonSizer.AddButton(self._informationButton)
+			buttonSizer.Add(self._informationButton, flag=wx.RIGHT, border=5)
 		if self._enableFindButton:
 			self._findButton = wx.Button(self, id=self._findMenuId, label=_("&Find"))
-			buttonSizer.AddButton(self._findButton)
+			buttonSizer.Add(self._findButton, flag=wx.RIGHT, border=5)
 		if self._enableReplaceButton:
 			self._replaceButton = wx.Button(self, id=self._replaceMenuId, label=_("&Replace"))
-			buttonSizer.AddButton(self._replaceButton)
+			buttonSizer.Add(self._replaceButton, flag=wx.RIGHT, border=5)
 		self._saveButton = wx.Button(self, wx.ID_SAVE, label=_("Save (Ctrl+S)"))
+		self._saveAsId = wx.NewIdRef()
+		self._saveAsButton = wx.Button(self, self._saveAsId, label=_("Save As... (Ctrl+Shift+S)"))
 		self._cancelButton = wx.Button(self, wx.ID_CANCEL, label=_("Cancel (Esc)"))
 		self._saveButton.SetDefault()
-		buttonSizer.AddButton(self._saveButton)
-		buttonSizer.AddButton(self._cancelButton)
-		buttonSizer.Realize()
+		buttonSizer.Add(self._saveButton, flag=wx.RIGHT, border=5)
+		buttonSizer.Add(self._saveAsButton, flag=wx.RIGHT, border=5)
+		buttonSizer.Add(self._cancelButton)
 		mainSizer.Add(buttonSizer, flag=wx.ALL | wx.ALIGN_RIGHT, border=8)
 
 		self.SetSizer(mainSizer)
@@ -238,6 +246,7 @@ class ClipboardEditorDialog(wx.Dialog):
 		self.Layout()
 
 		self._saveButton.Bind(wx.EVT_BUTTON, self.onSave)
+		self._saveAsButton.Bind(wx.EVT_BUTTON, self.onSaveAs)
 		self._cancelButton.Bind(wx.EVT_BUTTON, self.onCancel)
 		if self._enableFindButton:
 			self._findButton.Bind(wx.EVT_BUTTON, self.onFindDialog)
@@ -245,6 +254,7 @@ class ClipboardEditorDialog(wx.Dialog):
 			self._replaceButton.Bind(wx.EVT_BUTTON, self.onReplaceDialog)
 		self.Bind(wx.EVT_CLOSE, self.onClose)
 		self.Bind(wx.EVT_MENU, self.onSave, id=wx.ID_SAVE)
+		self.Bind(wx.EVT_MENU, self.onSaveAs, id=self._saveAsId)
 		self.Bind(wx.EVT_MENU, self.onCancel, id=wx.ID_CANCEL)
 		if self._enableFindButton or self._shortcutsWhenHiddenEnabled:
 			self.Bind(wx.EVT_MENU, self.onFindDialog, id=self._findMenuId)
@@ -265,6 +275,7 @@ class ClipboardEditorDialog(wx.Dialog):
 		accels.extend(
 			[
 				(wx.ACCEL_CTRL, ord("S"), wx.ID_SAVE),
+				(wx.ACCEL_CTRL | wx.ACCEL_SHIFT, ord("S"), self._saveAsId),
 				(wx.ACCEL_NORMAL, wx.WXK_ESCAPE, wx.ID_CANCEL),
 			],
 		)
@@ -285,6 +296,29 @@ class ClipboardEditorDialog(wx.Dialog):
 			self._resultMessage = _("Failed to update clipboard")
 			self._resultKind = "failed"
 		self._announceAndClose()
+
+	def onSaveAs(self, evt):
+		_playSound(500, 50)
+		text = self._textCtrl.GetValue()
+		with wx.FileDialog(
+			self,
+			_("Save as"),
+			wildcard=_("Text files (*.txt)|*.txt|All files (*.*)|*.*"),
+			style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT,
+		) as fileDialog:
+			if fileDialog.ShowModal() == wx.ID_CANCEL:
+				return
+			path = fileDialog.GetPath()
+			try:
+				with open(path, "w", encoding="utf-8") as f:
+					f.write(text)
+				self._resultMessage = _("File saved")
+				self._resultKind = "saved"
+				self._announceAndClose()
+			except Exception as e:
+				self._resultMessage = _("Error saving file: {error}").format(error=str(e))
+				self._resultKind = "failed"
+				self._announceAndClose()
 
 	def onCancel(self, evt):
 		if self._textCtrl.GetValue() == self._initialText:
@@ -312,6 +346,7 @@ class ClipboardEditorDialog(wx.Dialog):
 		self._announceAndClose()
 
 	def onFindDialog(self, evt):
+		_playSound(500, 50)
 		self._showFind(focusEdit=True)
 
 	def onInformation(self, evt):
@@ -319,9 +354,11 @@ class ClipboardEditorDialog(wx.Dialog):
 		if not text:
 			_announceClipboardEmpty()
 			return
+		_playSound(660, 60)
 		ui.message(_buildInformationMessage(text))
 
 	def onReplaceDialog(self, evt):
+		_playSound(500, 50)
 		self._showFindReplace(focusReplace=False)
 
 	def _showFind(self, focusEdit):
@@ -360,16 +397,19 @@ class ClipboardEditorDialog(wx.Dialog):
 		if self._closing:
 			return
 		self._closing = True
+		
+		# Play sound based on result kind
+		if self._resultKind == "saved":
+			_playSound(880, 70)
+			icon = wx.ICON_INFORMATION
+		elif self._resultKind == "canceled":
+			_playSound(440, 70)
+			icon = wx.ICON_INFORMATION
+		else: # failed or others
+			_playSound(330, 100)
+			icon = wx.ICON_ERROR
+
 		if self._resultMessage:
-			if self._resultKind == "saved":
-				tones.beep(880, 70)
-				icon = wx.ICON_INFORMATION
-			elif self._resultKind == "canceled":
-				tones.beep(440, 70)
-				icon = wx.ICON_INFORMATION
-			else:
-				tones.beep(330, 100)
-				icon = wx.ICON_ERROR
 			gui.messageBox(
 				self._resultMessage,
 				_("Clipboard Content Editor"),
@@ -443,7 +483,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		self._editorDialog.Show()
 		self._editorDialog.Raise()
 		self._editorDialog._textCtrl.SetFocus()
-		tones.beep(660, 60)
+		_playSound(550, 60)
 
 	def _onEditorClosed(self):
 		self._editorDialog = None
@@ -466,6 +506,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		if not text:
 			_announceClipboardEmpty()
 			return
+		_playSound(660, 60)
 		ui.message(_buildInformationMessage(text))
 
 	@script(
@@ -487,12 +528,15 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			ui.message(_("Protect mode is disabled"))
 			return
 		if not self._backupHistory:
+			_playSound(330, 100)
 			ui.message(_("No backup available"))
 			return
 		previousText = self._backupHistory.pop(0)
 		if api.copyToClip(previousText):
+			_playSound(880, 70)
 			ui.message(_("Previous clipboard restored"))
 		else:
+			_playSound(330, 100)
 			ui.message(_("Failed to restore clipboard"))
 
 
@@ -539,7 +583,7 @@ class FindReplaceDialog(wx.Dialog):
 
 	def onCharHook(self, evt):
 		if evt.GetKeyCode() == wx.WXK_ESCAPE:
-			self.Hide()
+			self.onClose(evt)
 			return
 		evt.Skip()
 
@@ -562,10 +606,12 @@ class FindReplaceDialog(wx.Dialog):
 		if found is None:
 			found = _findNext(fullText, findText, 0, matchCase, wholeWordsOnly)
 		if found is None:
+			_playSound(330, 100)
 			ui.message(_("Text not found"))
 			return False
 		self._textCtrl.SetFocus()
 		self._textCtrl.SetSelection(found[0], found[1])
+		_playSound(750, 40)
 		return True
 
 	def onReplace(self, evt):
@@ -596,6 +642,7 @@ class FindReplaceDialog(wx.Dialog):
 			self._textCtrl.Replace(start, end, replacement)
 			self._textCtrl.SetSelection(start, start + len(replacement))
 			replaced = True
+			_playSound(750, 40)
 		if not replaced:
 			self.onFindNext(evt)
 			start, end = self._textCtrl.GetSelection()
@@ -617,6 +664,7 @@ class FindReplaceDialog(wx.Dialog):
 				self._textCtrl.Replace(start, end, replacement)
 				self._textCtrl.SetSelection(start, start + len(replacement))
 				replaced = True
+				_playSound(750, 40)
 		if replaced:
 			self._resetAndHide()
 
@@ -637,13 +685,16 @@ class FindReplaceDialog(wx.Dialog):
 			wholeWordsOnly,
 		)
 		if count == 0:
+			_playSound(330, 100)
 			ui.message(_("Text not found"))
 			return
 		self._textCtrl.SetValue(newText)
+		_playSound(880, 70)
 		ui.message(_("{count} replacements").format(count=count))
 		self._resetAndHide()
 
 	def onClose(self, evt):
+		_playSound(440, 70)
 		self.Hide()
 
 	def _resetAndHide(self):
@@ -688,7 +739,7 @@ class FindDialog(wx.Dialog):
 
 	def onCharHook(self, evt):
 		if evt.GetKeyCode() == wx.WXK_ESCAPE:
-			self.Hide()
+			self.onClose(evt)
 			return
 		if evt.GetKeyCode() in (wx.WXK_RETURN, wx.WXK_NUMPAD_ENTER):
 			self.onFindNext(evt)
@@ -711,16 +762,17 @@ class FindDialog(wx.Dialog):
 		if found is None:
 			found = _findNext(fullText, findText, 0, matchCase, wholeWordsOnly)
 		if found is None:
+			_playSound(330, 100)
 			ui.message(_("Text not found"))
 			return
 		self._textCtrl.SetFocus()
 		self._textCtrl.SetSelection(found[0], found[1])
+		_playSound(750, 40)
 
-	def _findAndClose(self):
-		if self.onFindNext(None):
-			self.Hide()
+
 
 	def onClose(self, evt):
+		_playSound(440, 70)
 		self.Hide()
 
 
@@ -729,6 +781,8 @@ class AddonSettingsPanel(SettingsPanel):
 
 	def makeSettings(self, settingsSizer):
 		sHelper = guiHelper.BoxSizerHelper(self, sizer=settingsSizer)
+		self.soundCheckBox = sHelper.addItem(wx.CheckBox(self, label=_("Enable &sound")))
+		self.soundCheckBox.SetValue(config.conf["ClipboardContentEditor"]["soundEnabled"])
 		self.shortcutsWhenHiddenCheckBox = sHelper.addItem(
 			wx.CheckBox(
 				self,
@@ -773,6 +827,7 @@ class AddonSettingsPanel(SettingsPanel):
 		config.conf["ClipboardContentEditor"][
 			"shortcutsWhenHiddenEnabled"
 		] = self.shortcutsWhenHiddenCheckBox.GetValue()
+		config.conf["ClipboardContentEditor"]["soundEnabled"] = self.soundCheckBox.GetValue()
 		config.conf["ClipboardContentEditor"]["findButtonEnabled"] = self.findCheckBox.GetValue()
 		config.conf["ClipboardContentEditor"][
 			"findReplaceButtonEnabled"

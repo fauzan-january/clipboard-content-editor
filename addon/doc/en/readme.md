@@ -2,23 +2,17 @@
 
 Author: Fauzan January
 
-[Read in Indonesian](../id/readme.md)
+[Read in Indonesian](addon/doc/id/readme.md)
 
 This NVDA add-on lets you edit the current clipboard text in a simple dialog before pasting it elsewhere. It also provides quick actions to show information, find text, and replace text.
 
 ## What's New?
 
-- Global shortcuts are now standardized: NVDA+E opens the editor dialog, NVDA+Z restores clipboard backups, and NVDA+I announces clipboard character/word/line counts.
-- Global shortcuts can now be reassigned via NVDA Input Gestures.
-- The Clear feature has been removed entirely (button, shortcut, settings, and notifications) because you can clear text directly in the clipboard editor.
-- The Read feature has been removed entirely (button, shortcut, settings, and notifications) because NVDA already provides clipboard reading via NVDA+C.
-- A Find button was added before Replace, with separate enable/disable options and updated shortcuts (Alt+F for Find, Alt+R for Replace).
-- Replace now preserves case by default, matching the capitalization of the found text.
-- Checkbox labels were updated to "Case sensitive" and "Find/Replace whole words only, not part of other words".
-- The clipboard info message now reads "Clipboard information: ...".
-- Documentation now includes links to other available languages.
-- What's New information is now available in both the documentation and the installation dialog.
-- Development support information has been removed from the documentation and installation dialog.
+- Added **Save As** feature (Ctrl+Shift+S) to the editor, allowing content to be saved as .txt or other file types.
+- Added a setting to enable or disable addon sounds.
+- Added comprehensive sound feedback to Information, Restore Backup, and Replace All features for consistent audio cues.
+- Fixed the "Read in [Language]" links in the documentation to correctly open the HTML files instead of showing file not found errors or opening raw source files.
+- The editor buttons are now strictly ordered for better navigation: Information (Alt+I) -> Find -> Replace -> Save -> Save As -> Cancel.
 
 ## Features
 
@@ -26,7 +20,9 @@ This NVDA add-on lets you edit the current clipboard text in a simple dialog bef
 - Find text with a dedicated Find dialog.
 - Replace text within the editor.
 - Show information (characters, words, lines) about clipboard text.
+- Save clipboard content to a file.
 - Optional clipboard backup (protect mode) with restore.
+- Customizable sound settings.
 - Global shortcuts for Information.
 
 ## How to use
@@ -49,6 +45,7 @@ Editor shortcuts:
 - `Alt+F` - Find text.
 - `Alt+R` - Replace text.
 - `Ctrl+S` - Save changes (Save button).
+- `Ctrl+Shift+S` - Save content as file (Save As button).
 - `Esc` - Cancel (Cancel button).
 
 If the clipboard is empty, Information will announce "clipboard is empty".
@@ -57,6 +54,7 @@ If the clipboard is empty, Information will announce "clipboard is empty".
 
 Open NVDA Settings and select the add-on category:
 
+- Enable sound (default: enabled).
 - Keep shortcuts active when buttons are hidden in editor (default: enabled).
 - Enable Information button in editor.
 - Enable Find button in editor.
@@ -80,5 +78,5 @@ This add-on is released under the GNU General Public License version 2 (GPL v2).
 ## Contact
 
 - Email: [surel@fauzanaja.com](mailto:surel@fauzanaja.com)
-- Telegram: [fauzan_january/](https://t.me/fauzan_january/)
-- Website: [fauzanaja.com/](https://fauzanaja.com/)
+- Telegram: [fauzan_january](https://t.me/fauzan_january/)
+- Website: [fauzanaja.com](https://fauzanaja.com/)

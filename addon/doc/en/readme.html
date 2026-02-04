@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="../style.css" media="screen">
-<title>Clipboard Content Editor 1.1.0</title>
+<title>Clipboard Content Editor 1.2.1</title>
 </head>
 <body>
 <h1>Cliptboard Content Editor</h1>
@@ -13,17 +13,11 @@
 <p>This NVDA add-on lets you edit the current clipboard text in a simple dialog before pasting it elsewhere. It also provides quick actions to show information, find text, and replace text.</p>
 <h2>What's New?</h2>
 <ul>
-<li>Global shortcuts are now standardized: NVDA+E opens the editor dialog, NVDA+Z restores clipboard backups, and NVDA+I announces clipboard character/word/line counts.</li>
-<li>Global shortcuts can now be reassigned via NVDA Input Gestures.</li>
-<li>The Clear feature has been removed entirely (button, shortcut, settings, and notifications) because you can clear text directly in the clipboard editor.</li>
-<li>The Read feature has been removed entirely (button, shortcut, settings, and notifications) because NVDA already provides clipboard reading via NVDA+C.</li>
-<li>A Find button was added before Replace, with separate enable/disable options and updated shortcuts (Alt+F for Find, Alt+R for Replace).</li>
-<li>Replace now preserves case by default, matching the capitalization of the found text.</li>
-<li>Checkbox labels were updated to "Case sensitive" and "Find/Replace whole words only, not part of other words".</li>
-<li>The clipboard info message now reads "Clipboard information: ...".</li>
-<li>Documentation now includes links to other available languages.</li>
-<li>What's New information is now available in both the documentation and the installation dialog.</li>
-<li>Development support information has been removed from the documentation and installation dialog.</li>
+<li>Added <strong>Save As</strong> feature (Ctrl+Shift+S) to the editor, allowing content to be saved as .txt or other file types.</li>
+<li>Added a setting to enable or disable addon sounds.</li>
+<li>Added comprehensive sound feedback to Information, Restore Backup, and Replace All features for consistent audio cues.</li>
+<li>Fixed the "Read in [Language]" links in the documentation to correctly open the HTML files instead of showing file not found errors or opening raw source files.</li>
+<li>The editor buttons are now strictly ordered for better navigation: Information (Alt+I) -&gt; Find -&gt; Replace -&gt; Save -&gt; Save As -&gt; Cancel.</li>
 </ul>
 <h2>Features</h2>
 <ul>
@@ -31,7 +25,9 @@
 <li>Find text with a dedicated Find dialog.</li>
 <li>Replace text within the editor.</li>
 <li>Show information (characters, words, lines) about clipboard text.</li>
+<li>Save clipboard content to a file.</li>
 <li>Optional clipboard backup (protect mode) with restore.</li>
+<li>Customizable sound settings.</li>
 <li>Global shortcuts for Information.</li>
 </ul>
 <h2>How to use</h2>
@@ -53,11 +49,13 @@
 - <code>Alt+F</code> - Find text.
 - <code>Alt+R</code> - Replace text.
 - <code>Ctrl+S</code> - Save changes (Save button).
+- <code>Ctrl+Shift+S</code> - Save content as file (Save As button).
 - <code>Esc</code> - Cancel (Cancel button).</p>
 <p>If the clipboard is empty, Information will announce "clipboard is empty".</p>
 <h2>Settings</h2>
 <p>Open NVDA Settings and select the add-on category:</p>
 <ul>
+<li>Enable sound (default: enabled).</li>
 <li>Keep shortcuts active when buttons are hidden in editor (default: enabled).</li>
 <li>Enable Information button in editor.</li>
 <li>Enable Find button in editor.</li>
@@ -77,8 +75,8 @@
 <h2>Contact</h2>
 <ul>
 <li>Email: <a href="mailto:surel@fauzanaja.com">surel@fauzanaja.com</a></li>
-<li>Telegram: <a href="https://t.me/fauzan_january/">fauzan_january/</a></li>
-<li>Website: <a href="https://fauzanaja.com/">fauzanaja.com/</a></li>
+<li>Telegram: <a href="https://t.me/fauzan_january/">fauzan_january</a></li>
+<li>Website: <a href="https://fauzanaja.com/">fauzanaja.com</a></li>
 </ul>
 </body>
 </html>

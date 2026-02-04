@@ -39,6 +39,15 @@ def md2html(
 		mdText = f.read()
 	for k, v in headerDic.items():
 		mdText = mdText.replace(k, v, 1)
+
+	# Fix links for proper navigation in the built add-on documentation
+	# Replace root-relative links from the main README (e.g. addon/doc/id/readme.md -> ../id/readme.html)
+	mdText = mdText.replace("addon/doc/id/readme.md", "../id/readme.html")
+	mdText = mdText.replace("addon/doc/en/readme.md", "../en/readme.html")
+
+	# Replace relative markdown links with html links (e.g. ../en/readme.md -> ../en/readme.html)
+	mdText = mdText.replace("../id/readme.md", "../id/readme.html")
+	mdText = mdText.replace("../en/readme.md", "../en/readme.html")
 	htmlText = markdown.markdown(mdText, extensions=mdExtensions)
 	# Optimization: build resulting HTML text in one go instead of writing parts separately.
 	docText = "\n".join(

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: ClipboardContentEditor 1.1.0\n"
+"Project-Id-Version: ClipboardContentEditor 1.2.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-03 00:00+0000\n"
 "PO-Revision-Date: 2026-01-03 00:00+0000\n"
@@ -17,11 +17,11 @@ msgstr "Clipboard Content Editor - What's New"
 msgid "Clipboard Content Editor - Installation"
 msgstr "Clipboard Content Editor - Installation"
 
-msgid "Do you want to continue installation or view what's new first?"
-msgstr "Do you want to continue installation or view what's new first?"
+msgid "Do you want to continue installation or see what's new first?"
+msgstr "Do you want to continue installation or see what's new first?"
 
-msgid "&View What's New"
-msgstr "&View What's New"
+msgid "&See what's new"
+msgstr "&See what's new"
 
 msgid "&Continue Installation"
 msgstr "&Continue Installation"
@@ -149,3 +149,20 @@ msgstr "Enable &protect mode (clipboard backup)"
 msgid "Number of backup &levels"
 msgstr "Number of backup &levels"
 
+msgid "Save As... (Ctrl+Shift+S)"
+msgstr "Save As... (Ctrl+Shift+S)"
+
+msgid "Save as"
+msgstr "Save as"
+
+msgid "Text files (*.txt)|*.txt|All files (*.*)|*.*"
+msgstr "Text files (*.txt)|*.txt|All files (*.*)|*.*"
+
+msgid "File saved"
+msgstr "File saved"
+
+msgid "Error saving file: {error}"
+msgstr "Error saving file: {error}"
+
+msgid "Enable &sound"
+msgstr "Enable &sound"

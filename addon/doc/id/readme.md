@@ -8,17 +8,11 @@ Add-on NVDA ini membantu Anda mengedit teks clipboard saat ini melalui dialog se
 
 ## Apa yang Baru?
 
-- Pintasan global sekarang distandarkan: NVDA+E membuka dialog editor, NVDA+Z memulihkan cadangan papan klip, dan NVDA+I mengumumkan jumlah karakter/kata/baris pada papan klip.
-- Semua pintasan global kini bisa diubah lewat pengaturan Input Gestures di NVDA.
-- Fitur Clear dihapus sepenuhnya (tombol, shortcut, pengaturan, dan notifikasi) karena pengguna bisa menghapus langsung lewat editor papan klip.
-- Fitur Read dihapus sepenuhnya (tombol, shortcut, pengaturan, dan notifikasi) karena NVDA sudah menyediakan pembacaan papan klip lewat NVDA+C.
-- Menambahkan tombol Find sebelum Replace, dengan opsi enable/disable terpisah serta pintasan diperbarui (Alt+F untuk Find, Alt+R untuk Replace).
-- Replace sekarang menjaga kapitalisasi secara default (mengikuti huruf besar/kecil pada teks yang ditemukan).
-- Label checkbox diperbarui menjadi "Case sensitive" dan "Find/Replace whole words only, not part of other words".
-- Teks info clipboard kini menjadi "Clipboard information: ...".
-- Dokumentasi sekarang menampilkan tautan ke bahasa lain yang tersedia.
-- Informasi Apa yang Baru kini tersedia di dokumentasi dan dialog instalasi.
-- Informasi dukungan pengembangan dihapus dari dokumentasi dan dialog instalasi.
+- Menambahkan fitur **Save As** (Ctrl+Shift+S) ke editor, konten bisa disimpan sebagai .txt atau tipe file lainnya.
+- Menambahkan opsi untuk mengaktifkan atau menonaktifkan suara add-on.
+- Menambahkan umpan balik suara pada fitur Information, Restore Backup, dan Replace All agar konsisten.
+- Memperbaiki link "Read in [Language]" di dokumentasi yang sebelumnya error (file not found) atau membuka source file mentah.
+- Urutan tombol editor dirapikan: Information (Alt+I) -> Find -> Replace -> Save -> Save As -> Cancel.
 
 ## Fitur
 
@@ -26,7 +20,9 @@ Add-on NVDA ini membantu Anda mengedit teks clipboard saat ini melalui dialog se
 - Dialog Find untuk mencari teks.
 - Mengganti teks di dalam editor.
 - Menampilkan informasi (jumlah karakter, kata, dan baris) dari teks clipboard.
+- Menyimpan konten clipboard ke file.
 - Cadangan clipboard (protect mode) dan pemulihan.
+- Pengaturan suara yang dapat disesuaikan.
 - Shortcut global untuk Information.
 
 ## Cara pakai
@@ -49,6 +45,7 @@ Shortcut di dialog editor:
 - `Alt+F` - Cari teks (Find).
 - `Alt+R` - Ganti teks (Replace).
 - `Ctrl+S` - Save perubahan (tombol Save).
+- `Ctrl+Shift+S` - Simpan konten sebagai file (tombol Save As).
 - `Esc` - Cancel (tombol Cancel).
 
 Jika clipboard kosong, Information akan mengumumkan "clipboard is empty".
@@ -57,6 +54,7 @@ Jika clipboard kosong, Information akan mengumumkan "clipboard is empty".
 
 Buka NVDA Settings dan pilih kategori add-on:
 
+- Enable sound (default: enabled).
 - Keep shortcuts active when buttons are hidden in editor (default: enabled).
 - Enable Information button in editor.
 - Enable Find button in editor.
@@ -80,5 +78,5 @@ Add-on ini dirilis dengan lisensi GNU General Public License versi 2 (GPL v2).
 ## Kontak
 
 - Surel: [surel@fauzanaja.com](mailto:surel@fauzanaja.com)
-- Telegram: [fauzan_january/](https://t.me/fauzan_january/)
-- Situs web: [fauzanaja.com/](https://fauzanaja.com/)
+- Telegram: [fauzan_january](https://t.me/fauzan_january/)
+- Situs web: [fauzanaja.com](https://fauzanaja.com/)

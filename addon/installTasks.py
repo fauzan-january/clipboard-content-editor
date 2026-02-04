@@ -87,36 +87,36 @@ class WhatsNewDialog(wx.Dialog):
 
 
 class InstallPromptDialog(wx.Dialog):
+	def _on_close(self, evt):
+		self.EndModal(wx.ID_OK)
+
+	def _on_view_whats_new(self, evt):
+		self.EndModal(wx.ID_MORE)
+
 	def __init__(self, parent):
 		super().__init__(parent, title=_("Clipboard Content Editor - Installation"))
 		main_sizer = wx.BoxSizer(wx.VERTICAL)
 
 		message = _(
-			"Do you want to continue installation or view what's new first?"
+			"Do you want to continue installation or see what's new first?"
 		)
 		text = wx.StaticText(self, label=message)
 		text.Wrap(480)
 		main_sizer.Add(text, 0, wx.ALL, 15)
 
 		button_sizer = wx.BoxSizer(wx.HORIZONTAL)
-		view_btn = wx.Button(self, wx.ID_MORE, label=_("&View What's New"))
+		view_new_btn = wx.Button(self, label=_("&See what's new"))
 		continue_btn = wx.Button(
 			self, wx.ID_OK, label=_("&Continue Installation")
 		)
 		continue_btn.SetDefault()
-		button_sizer.Add(view_btn, 0, wx.RIGHT, 10)
+		button_sizer.Add(view_new_btn, 0, wx.RIGHT, 10)
 		button_sizer.Add(continue_btn, 0)
 		main_sizer.Add(button_sizer, 0, wx.ALIGN_RIGHT | wx.ALL, 15)
 
 		self.SetSizerAndFit(main_sizer)
 		self.Bind(wx.EVT_CLOSE, self._on_close)
-		view_btn.Bind(wx.EVT_BUTTON, self._on_view_whats_new)
-
-	def _on_close(self, evt):
-		self.EndModal(wx.ID_OK)
-
-	def _on_view_whats_new(self, evt):
-		self.EndModal(wx.ID_MORE)
+		view_new_btn.Bind(wx.EVT_BUTTON, self._on_view_whats_new)
 
 
 def onInstall():

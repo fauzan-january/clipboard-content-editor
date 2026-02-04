@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: ClipboardContentEditor 1.1.0\n"
+"Project-Id-Version: ClipboardContentEditor 1.2.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-03 00:00+0000\n"
 "PO-Revision-Date: 2026-01-03 00:00+0000\n"
@@ -17,11 +17,11 @@ msgstr "Clipboard Content Editor - Apa yang Baru"
 msgid "Clipboard Content Editor - Installation"
 msgstr "Clipboard Content Editor - Instalasi"
 
-msgid "Do you want to continue installation or view what's new first?"
+msgid "Do you want to continue installation or see what's new first?"
 msgstr "Apakah Anda ingin melanjutkan instalasi atau melihat apa yang baru terlebih dahulu?"
 
-msgid "&View What's New"
-msgstr "Lihat Apa yang Baru (&V)"
+msgid "&See what's new"
+msgstr "Lihat Apa yang Baru (&S)"
 
 msgid "&Continue Installation"
 msgstr "Lanjutkan Instalasi (&C)"
@@ -148,3 +148,20 @@ msgstr "Aktifkan mode &proteksi (cadangan clipboard)"
 msgid "Number of backup &levels"
 msgstr "Jumlah &level cadangan"
 
+msgid "Save As... (Ctrl+Shift+S)"
+msgstr "Simpan Sebagai... (Ctrl+Shift+S)"
+
+msgid "Save as"
+msgstr "Simpan sebagai"
+
+msgid "Text files (*.txt)|*.txt|All files (*.*)|*.*"
+msgstr "File teks (*.txt)|*.txt|Semua file (*.*)|*.*"
+
+msgid "File saved"
+msgstr "File disimpan"
+
+msgid "Error saving file: {error}"
+msgstr "Gagal menyimpan file: {error}"
+
+msgid "Enable &sound"
+msgstr "Aktifkan &suara"

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="../style.css" media="screen">
-<title>Clipboard Content Editor 1.1.0</title>
+<title>Clipboard Content Editor 1.2.1</title>
 </head>
 <body>
 <h1>Cliptboard Content Editor</h1>
@@ -13,17 +13,11 @@
 <p>Add-on NVDA ini membantu Anda mengedit teks clipboard saat ini melalui dialog sederhana sebelum ditempelkan ke aplikasi lain. Add-on ini juga menyediakan aksi cepat untuk menampilkan informasi, mencari, dan mengganti teks.</p>
 <h2>Apa yang Baru?</h2>
 <ul>
-<li>Pintasan global sekarang distandarkan: NVDA+E membuka dialog editor, NVDA+Z memulihkan cadangan papan klip, dan NVDA+I mengumumkan jumlah karakter/kata/baris pada papan klip.</li>
-<li>Semua pintasan global kini bisa diubah lewat pengaturan Input Gestures di NVDA.</li>
-<li>Fitur Clear dihapus sepenuhnya (tombol, shortcut, pengaturan, dan notifikasi) karena pengguna bisa menghapus langsung lewat editor papan klip.</li>
-<li>Fitur Read dihapus sepenuhnya (tombol, shortcut, pengaturan, dan notifikasi) karena NVDA sudah menyediakan pembacaan papan klip lewat NVDA+C.</li>
-<li>Menambahkan tombol Find sebelum Replace, dengan opsi enable/disable terpisah serta pintasan diperbarui (Alt+F untuk Find, Alt+R untuk Replace).</li>
-<li>Replace sekarang menjaga kapitalisasi secara default (mengikuti huruf besar/kecil pada teks yang ditemukan).</li>
-<li>Label checkbox diperbarui menjadi "Case sensitive" dan "Find/Replace whole words only, not part of other words".</li>
-<li>Teks info clipboard kini menjadi "Clipboard information: ...".</li>
-<li>Dokumentasi sekarang menampilkan tautan ke bahasa lain yang tersedia.</li>
-<li>Informasi Apa yang Baru kini tersedia di dokumentasi dan dialog instalasi.</li>
-<li>Informasi dukungan pengembangan dihapus dari dokumentasi dan dialog instalasi.</li>
+<li>Menambahkan fitur <strong>Save As</strong> (Ctrl+Shift+S) ke editor, konten bisa disimpan sebagai .txt atau tipe file lainnya.</li>
+<li>Menambahkan opsi untuk mengaktifkan atau menonaktifkan suara add-on.</li>
+<li>Menambahkan umpan balik suara pada fitur Information, Restore Backup, dan Replace All agar konsisten.</li>
+<li>Memperbaiki link "Read in [Language]" di dokumentasi yang sebelumnya error (file not found) atau membuka source file mentah.</li>
+<li>Urutan tombol editor dirapikan: Information (Alt+I) -&gt; Find -&gt; Replace -&gt; Save -&gt; Save As -&gt; Cancel.</li>
 </ul>
 <h2>Fitur</h2>
 <ul>
@@ -31,7 +25,9 @@
 <li>Dialog Find untuk mencari teks.</li>
 <li>Mengganti teks di dalam editor.</li>
 <li>Menampilkan informasi (jumlah karakter, kata, dan baris) dari teks clipboard.</li>
+<li>Menyimpan konten clipboard ke file.</li>
 <li>Cadangan clipboard (protect mode) dan pemulihan.</li>
+<li>Pengaturan suara yang dapat disesuaikan.</li>
 <li>Shortcut global untuk Information.</li>
 </ul>
 <h2>Cara pakai</h2>
@@ -53,11 +49,13 @@
 - <code>Alt+F</code> - Cari teks (Find).
 - <code>Alt+R</code> - Ganti teks (Replace).
 - <code>Ctrl+S</code> - Save perubahan (tombol Save).
+- <code>Ctrl+Shift+S</code> - Simpan konten sebagai file (tombol Save As).
 - <code>Esc</code> - Cancel (tombol Cancel).</p>
 <p>Jika clipboard kosong, Information akan mengumumkan "clipboard is empty".</p>
 <h2>Pengaturan</h2>
 <p>Buka NVDA Settings dan pilih kategori add-on:</p>
 <ul>
+<li>Enable sound (default: enabled).</li>
 <li>Keep shortcuts active when buttons are hidden in editor (default: enabled).</li>
 <li>Enable Information button in editor.</li>
 <li>Enable Find button in editor.</li>
@@ -77,8 +75,8 @@
 <h2>Kontak</h2>
 <ul>
 <li>Surel: <a href="mailto:surel@fauzanaja.com">surel@fauzanaja.com</a></li>
-<li>Telegram: <a href="https://t.me/fauzan_january/">fauzan_january/</a></li>
-<li>Situs web: <a href="https://fauzanaja.com/">fauzanaja.com/</a></li>
+<li>Telegram: <a href="https://t.me/fauzan_january/">fauzan_january</a></li>
+<li>Situs web: <a href="https://fauzanaja.com/">fauzanaja.com</a></li>
 </ul>
 </body>
 </html>

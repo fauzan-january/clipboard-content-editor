@@ -1,3 +1,11 @@
+## Changelog - Version 1.2.1
+
+- Added **Save As** feature (Ctrl+Shift+S) to the editor, allowing content to be saved as .txt or other file types.
+- Added a setting to enable or disable addon sounds.
+- Added comprehensive sound feedback to Information, Restore Backup, and Replace All features for consistent audio cues.
+- Fixed the "Read in [Language]" links in the documentation to correctly open the HTML files instead of showing file not found errors or opening raw source files.
+- The editor buttons are now strictly ordered for better navigation: Information -> Find -> Replace -> Save -> Save As -> Cancel.
+
 ## Changelog - Version 1.1.0
 
 - Global shortcuts are now standardized: NVDA+E opens the editor dialog, NVDA+Z restores clipboard backups, and NVDA+I announces clipboard character/word/line counts.
