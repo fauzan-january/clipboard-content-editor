@@ -14,7 +14,11 @@ addon_info = AddonInfo(
 		"Edits the current clipboard text in a simple editor so pasted content reflects the changes. "
 		"Shortcuts: NVDA+E opens the editor, NVDA+Z restores the previous clipboard, and NVDA+I shows clipboard info."
 	),
+<<<<<<< HEAD
 	addon_version="1.2.1",
+=======
+	addon_version="1.2.0",
+>>>>>>> 8f9247c0e47cefdc23e7fb1ca3628dc33eec20c4
 	# Translators: What's new content for the add-on version
 	addon_changelog=_(
 		"- Added **Save As** feature (Ctrl+Shift+S) to the editor, allowing content "

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ## Changelog - Version 1.2.1
+=======
+## Changelog - Version 1.2.0
+>>>>>>> 8f9247c0e47cefdc23e7fb1ca3628dc33eec20c4
 
 - Added **Save As** feature (Ctrl+Shift+S) to the editor, allowing content to be saved as .txt or other file types.
 - Added a setting to enable or disable addon sounds.

@@ -1,6 +1,10 @@
 Apa yang Baru?
 Apa yang Baru?
+<<<<<<< HEAD
 Versi 1.2.1
+=======
+Versi 1.2.0
+>>>>>>> 8f9247c0e47cefdc23e7fb1ca3628dc33eec20c4
 - Menambahkan fitur Save As (Ctrl+Shift+S) ke editor, konten bisa disimpan sebagai .txt atau tipe file lainnya.
 - Menambahkan opsi untuk mengaktifkan atau menonaktifkan suara add-on.
 - Menambahkan umpan balik suara pada fitur Information, Restore Backup, dan Replace All agar konsisten.
