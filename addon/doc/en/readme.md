@@ -1,4 +1,4 @@
-# Cliptboard Content Editor
+# Clipboard Content Editor
 
 Author: Fauzan January
 

@@ -1,10 +1,6 @@
 msgid ""
 msgstr ""
-<<<<<<< HEAD
-"Project-Id-Version: ClipboardContentEditor 1.2.1\n"
-=======
-"Project-Id-Version: ClipboardContentEditor 1.2.0\n"
->>>>>>> 8f9247c0e47cefdc23e7fb1ca3628dc33eec20c4
+"Project-Id-Version: ClipboardContentEditor 1.2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-03 00:00+0000\n"
 "PO-Revision-Date: 2026-01-03 00:00+0000\n"

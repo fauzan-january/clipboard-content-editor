@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-## Changelog - Version 1.2.1
+## Changelog - Version 1.2.2
 =======
 ## Changelog - Version 1.2.0
 >>>>>>> 8f9247c0e47cefdc23e7fb1ca3628dc33eec20c4

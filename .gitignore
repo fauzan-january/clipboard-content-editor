@@ -1,5 +1,8 @@
+*.html
 *.mo
+*.pot
 *.nvda-addon
+manifest.ini
 .sconsign.dblite
-ClipboardContentEditor.pot
-
+.agent
+panduan-pengembangan-addon-nvda/
