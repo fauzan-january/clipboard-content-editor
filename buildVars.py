@@ -14,19 +14,11 @@ addon_info = AddonInfo(
 		"Edits the current clipboard text in a simple editor so pasted content reflects the changes. "
 		"Shortcuts: NVDA+E opens the editor, NVDA+Z restores the previous clipboard, and NVDA+I shows clipboard info."
 	),
-	addon_version="1.2.2",
+	addon_version="1.2.3",
 	# Translators: What's new content for the add-on version
 	addon_changelog=_(
-		"- Added **Save As** feature (Ctrl+Shift+S) to the editor, allowing content "
-		"to be saved as .txt or other file types.\n"
-		"- Added a setting to enable or disable addon sounds.\n"
-		"- Added comprehensive sound feedback to Information, Restore Backup, and "
-		"Replace All features for consistent audio cues.\n"
-		"- Fixed the \"Read in [Language]\" links in the documentation to correctly "
-		"open the HTML files instead of showing file not found errors or opening raw "
-		"source files.\n"
-		"- The editor buttons are now strictly ordered for better navigation: "
-		"Information -> Find -> Replace -> Save -> Save As -> Cancel."
+		"- Added Arabic language support.\n"
+		"- No other feature update."
 	),
 	addon_author="Fauzan January <surel@fauzanaja.com>",
 	addon_url="https://fauzanaja.com/nvda-addon/",

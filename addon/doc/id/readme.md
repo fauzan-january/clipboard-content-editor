@@ -8,6 +8,8 @@ Add-on NVDA ini membantu Anda mengedit teks clipboard saat ini melalui dialog se
 
 ## Apa yang Baru?
 
+- Menambahkan dukungan bahasa Arab.
+- Tidak ada pembaruan fitur lainnya.
 - Menambahkan fitur **Save As** (Ctrl+Shift+S) ke editor, konten bisa disimpan sebagai .txt atau tipe file lainnya.
 - Menambahkan opsi untuk mengaktifkan atau menonaktifkan suara add-on.
 - Menambahkan umpan balik suara pada fitur Information, Restore Backup, dan Replace All agar konsisten.

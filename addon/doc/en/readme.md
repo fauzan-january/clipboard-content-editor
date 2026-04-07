@@ -2,12 +2,14 @@
 
 Author: Fauzan January
 
-[Read in Indonesian](addon/doc/id/readme.md)
+[Read in Indonesian](../id/readme.md)
 
 This NVDA add-on lets you edit the current clipboard text in a simple dialog before pasting it elsewhere. It also provides quick actions to show information, find text, and replace text.
 
 ## What's New?
 
+- Added Arabic language support.
+- No other feature update.
 - Added **Save As** feature (Ctrl+Shift+S) to the editor, allowing content to be saved as .txt or other file types.
 - Added a setting to enable or disable addon sounds.
 - Added comprehensive sound feedback to Information, Restore Backup, and Replace All features for consistent audio cues.

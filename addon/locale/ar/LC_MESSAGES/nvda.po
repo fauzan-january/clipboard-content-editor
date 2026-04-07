@@ -1,0 +1,169 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ClipboardContentEditor 1.2.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-03 00:00+0000\n"
+"PO-Revision-Date: 2026-02-19 23:11+0200\n"
+"Last-Translator: Gemini\n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+msgid "Clipboard Content Editor - What's New"
+msgstr "محرر محتوى الحافظة - ما الجديد"
+
+msgid "Clipboard Content Editor - Installation"
+msgstr "محرر محتوى الحافظة - التثبيت"
+
+msgid "Do you want to continue installation or see what's new first?"
+msgstr "هل تريد متابعة التثبيت أم رؤية ما الجديد أولاً؟"
+
+msgid "&See what's new"
+msgstr "&رؤية ما الجديد"
+
+msgid "&Continue Installation"
+msgstr "&متابعة التثبيت"
+
+msgid "What's new information is unavailable."
+msgstr "معلومات ما الجديد غير متوفرة."
+
+msgid "&OK"
+msgstr "&موافق"
+
+msgid "Clipboard information: {chars} characters, {words} words, {lines} lines"
+msgstr "معلومات الحافظة: {chars} أحرف، {words} كلمات، {lines} أسطر"
+
+msgid "Clipboard is empty"
+msgstr "الحافظة فارغة"
+
+msgid "Clipboard Content Editor"
+msgstr "محرر محتوى الحافظة"
+
+msgid "Clipboard content:"
+msgstr "محتوى الحافظة:"
+
+msgid "&Information"
+msgstr "&معلومات"
+
+msgid "&Find"
+msgstr "&بحث"
+
+msgid "&Replace"
+msgstr "ا&ستبدال"
+
+msgid "Save (Ctrl+S)"
+msgstr "حفظ (Ctrl+S)"
+
+msgid "Cancel (Esc)"
+msgstr "إلغاء (Esc)"
+
+msgid "Clipboard updated"
+msgstr "تم تحديث الحافظة"
+
+msgid "Failed to update clipboard"
+msgstr "فشل تحديث الحافظة"
+
+msgid "Changes canceled"
+msgstr "تم إلغاء التغييرات"
+
+msgid "You have unsaved changes. Discard them?"
+msgstr "لديك تغييرات غير محفوظة. هل تريد تجاهلها؟"
+
+msgid "Opens a clipboard editor to modify the current clipboard text."
+msgstr "يفتح محرر الحافظة لتعديل نص الحافظة الحالي."
+
+msgid "Shows information about the current clipboard text."
+msgstr "يعرض معلومات حول نص الحافظة الحالي."
+
+msgid "Restores the previous clipboard content from backup."
+msgstr "يستعيد محتوى الحافظة السابق من النسخة الاحتياطية."
+
+msgid "Protect mode is disabled"
+msgstr "وضع الحماية معطل"
+
+msgid "No backup available"
+msgstr "لا توجد نسخة احتياطية متوفرة"
+
+msgid "Previous clipboard restored"
+msgstr "تمت استعادة الحافظة السابقة"
+
+msgid "Failed to restore clipboard"
+msgstr "فشل استعادة الحافظة"
+
+msgid "Find"
+msgstr "بحث"
+
+msgid "Replace"
+msgstr "استبدال"
+
+msgid "Find what"
+msgstr "البحث عن"
+
+msgid "Source text"
+msgstr "النص المصدر"
+
+msgid "Replacement text"
+msgstr "نص الاستبدال"
+
+msgid "Case sensitive"
+msgstr "مطابقة حالة الأحرف"
+
+msgid "Replace whole words only, not part of other words"
+msgstr "استبدال الكلمات بالكامل فقط، وليس جزءاً من كلمات أخرى"
+
+msgid "Find whole words only, not part of other words"
+msgstr "البحث عن الكلمات بالكامل فقط، وليس جزءاً من كلمات أخرى"
+
+msgid "Find next"
+msgstr "بحث عن التالي"
+
+msgid "Replace all"
+msgstr "استبدال الكل"
+
+msgid "Find text is empty"
+msgstr "نص البحث فارغ"
+
+msgid "Text not found"
+msgstr "لم يتم العثور على النص"
+
+msgid "{count} replacements"
+msgstr "{count} عملية استبدال"
+
+msgid "Keep shortcuts active when buttons are hidden in editor"
+msgstr "إبقاء الاختصارات نشطة عندما تكون الأزرار مخفية في المحرر"
+
+msgid "Enable &information button in editor"
+msgstr "تمكين زر ال&معلومات في المحرر"
+
+msgid "Enable &find button in editor"
+msgstr "تمكين زر ال&بحث في المحرر"
+
+msgid "Enable &replace button in editor"
+msgstr "تمكين زر الا&ستبدال في المحرر"
+
+msgid "Enable &protect mode (clipboard backup)"
+msgstr "تمكين وضع ال&حماية (النسخ الاحتياطي للحافظة)"
+
+msgid "Number of backup &levels"
+msgstr "عدد مستويات النسخ الا&حتياطي"
+
+msgid "Save As... (Ctrl+Shift+S)"
+msgstr "حفظ باسم... (Ctrl+Shift+S)"
+
+msgid "Save as"
+msgstr "حفظ باسم"
+
+msgid "Text files (*.txt)|*.txt|All files (*.*)|*.*"
+msgstr "ملفات نصية (*.txt)|*.txt|جميع الملفات (*.*)|*.*"
+
+msgid "File saved"
+msgstr "تم حفظ الملف"
+
+msgid "Error saving file: {error}"
+msgstr "خطأ في حفظ الملف: {error}"
+
+msgid "Enable &sound"
+msgstr "تمكين ال&صوت"
