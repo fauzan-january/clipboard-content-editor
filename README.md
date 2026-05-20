@@ -1,46 +1,47 @@
-# Cliptboard Content Editor
+# Clipboard Content Editor
 
 Author: Fauzan January
 
 [Read in Indonesian](addon/doc/id/readme.md)
 
-This NVDA add-on lets you edit the current clipboard text in a simple dialog before pasting it elsewhere. It also provides quick actions to show information, find text, and replace text.
-
-## What's New?
-
-- Added **Save As** feature (Ctrl+Shift+S) to the editor, allowing content to be saved as .txt or other file types.
-- Added a setting to enable or disable addon sounds.
-- Added comprehensive sound feedback to Information, Restore Backup, and Replace All features for consistent audio cues.
-- Fixed the "Read in [Language]" links in the documentation to correctly open the HTML files instead of showing file not found errors or opening raw source files.
-- The editor buttons are now strictly ordered for better navigation: Information (Alt+I) -> Find -> Replace -> Save -> Save As -> Cancel.
+This NVDA add-on lets you edit the current clipboard text in a simple dialog before pasting it elsewhere. It also acts as a powerful clipboard manager with unlimited history, append mode, and quick actions to show information, speak, and format text.
 
 ## Features
 
-- Edit the current clipboard text in a multiline editor.
-- Find text with a dedicated Find dialog.
-- Replace text within the editor.
-- Show information (characters, words, lines) about clipboard text.
-- Save clipboard content to a file.
-- Optional clipboard backup (protect mode) with restore.
-- Customizable sound settings.
-- Global shortcuts for Information.
+- **Clipboard Editor**: Edit the current clipboard text in a multiline editor with Find/Replace, Change Case, and Text Cleaner tools.
+- **Clipboard History**: Automatically saves your copied items into an unlimited history list with CRUD (Create, Read, Update, Delete) capabilities.
+- **Append Mode**: Collect multiple text snippets seamlessly by automatically concatenating new copies to the existing clipboard.
+- **Information & Speech**: Show detailed information (characters, words, lines) and speak the entire clipboard text.
+- **Save to File**: Save your clipboard content directly to a `.txt` file.
+- **Command Layer**: A unified global shortcut system to prevent keyboard conflicts.
 
 ## How to use
 
-1. Press `NVDA+E` to open the editor.
-2. Edit the text as needed.
-3. Use the buttons or shortcuts for Information, Find, Replace, Save (Ctrl+S), or Cancel (Esc).
+1. Press `Ctrl+Alt+C` to activate the add-on's command layer.
+2. Press `E` to open the editor.
+3. Edit the text, use `Tools` to change casing or clean text, or use Find/Replace.
 4. Press Save (Ctrl+S) to update the clipboard with the edited content.
 
-## Shortcuts
+## Commands
 
-Global shortcuts (work anywhere in NVDA):
+- `Ctrl+Alt+C`: Activate Clipboard Content Editor command layer
+- `F1`: Open Command List or Full Documentation (when in command layer)
+- `A`: On / Off Append Mode (when in command layer)
+- `E`: Open Clipboard Editor (when in command layer)
+- `R`: Restore Editor Backup (when in command layer)
+- `I`: Say Clipboard Information (when in command layer)
+- `S`: Speak Clipboard Content (when in command layer)
+- `H`: Open Clipboard History Manager (when in command layer)
 
-- `NVDA+E` - Open the clipboard editor.
-- `NVDA+I` - Show information about clipboard text.
-- `NVDA+Z` - Restore previous clipboard content (protect mode).
+## System Requirements
 
-Editor shortcuts:
+- NVDA 2025.3 or later (including full support for NVDA 2026.1 and 64-bit Python).
+- Windows 10 or later.
+
+### Editor Shortcuts
+(These work only when the Editor Dialog is open)
+
+- `Alt+T` - Open Tools Menu (Change Case, Text Cleaner).
 - `Alt+I` - Show information about the editor text.
 - `Alt+F` - Find text.
 - `Alt+R` - Replace text.
@@ -48,35 +49,43 @@ Editor shortcuts:
 - `Ctrl+Shift+S` - Save content as file (Save As button).
 - `Esc` - Cancel (Cancel button).
 
-If the clipboard is empty, Information will announce "clipboard is empty".
+### History Manager Shortcuts
+(These work only when the History Dialog is open)
+
+- `Enter` - Restore the selected item to the clipboard.
+- `Alt+E` - Open the selected item in the Editor.
+- `Alt+D` - Delete the selected item from history.
+- `Alt+C` - Clear all history.
 
 ## Settings
 
-Open NVDA Settings and select the add-on category:
+Open NVDA Settings and select the Clipboard Content Editor category:
 
+- Addon language (allows you to use a different language for the addon than NVDA; requires NVDA restart).
 - Enable sound (default: enabled).
-- Keep shortcuts active when buttons are hidden in editor (default: enabled).
-- Enable Information button in editor.
-- Enable Find button in editor.
-- Enable Replace button in editor.
-- Enable protect mode (clipboard backup).
+- Enable protect mode (editor clipboard backup).
 - Number of backup levels.
-
-## Protect mode (clipboard backup)
-
-When protect mode is enabled, the add-on stores a history of clipboard content before saving. You can restore the previous clipboard content using `NVDA+Z`. The number of saved backups is controlled by "Number of backup levels".
+- Clipboard history limit (options: 10, 25, 50, 100, All; default: 10).
 
 ## Notes
 
-- Find and Replace support match case and work within the editor text only.
-- In the Find dialog, type your text and press Esc to jump to the next match.
+- **Append Mode**: When enabled, every `Ctrl+C` you press will add the new text to the bottom of your current clipboard instead of replacing it. Remember to turn it off after you finish collecting text!
+- **History Manager**: The history tracks all text you copy across your system automatically. 
 
 ## License
 
 This add-on is released under the GNU General Public License version 2 (GPL v2).
 
+## Support and Contribution
+
+If you want to contribute or support the development of this addon, you can do so by providing feedback, reporting bugs, or suggesting new features by contacting the available contacts, opening an issue or pull request on GitHub, as well as donating for continued development.
+
+- **PayPal:** [donate@fauzanaja.com](mailto:donate@fauzanaja.com)
+- **PayPal.me:** [paypal.me/fauzanjanuary](https://paypal.me/fauzanjanuary)
+
 ## Contact
 
 - Email: [surel@fauzanaja.com](mailto:surel@fauzanaja.com)
 - Telegram: [fauzan_january](https://t.me/fauzan_january/)
+- WhatsApp Channel: [fauzan_january](https://whatsapp.com/channel/0029VaFLXIO545upgh6w5h3K)
 - Website: [fauzanaja.com](https://fauzanaja.com/)

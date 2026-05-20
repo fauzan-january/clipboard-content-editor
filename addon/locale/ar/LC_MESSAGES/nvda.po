@@ -167,3 +167,46 @@ msgstr "خطأ في حفظ الملف: {error}"
 
 msgid "Enable &sound"
 msgstr "تمكين ال&صوت"
+
+msgid "Clipboard Content Editor Installation"
+msgstr "تثبيت Clipboard Content Editor"
+
+msgid "Welcome to Clipboard Content Editor! Before continuing the installation, what would you like to do?"
+msgstr "مرحبًا بك في Clipboard Content Editor! قبل متابعة التثبيت، ماذا تود أن تفعل؟"
+
+msgid "&1. See What's New"
+msgstr "&1. انظر ما الجديد"
+
+msgid "&2. Support Development (Donate)"
+msgstr "&2. دعم التطوير (تبرع)"
+
+msgid "&3. Continue Installation"
+msgstr "&3. متابعة التثبيت"
+
+msgid "Clipboard information: {chars} characters, {words} words, {lines} lines, {paras} paragraphs"
+msgstr "معلومات الحافظة: {chars} حرفًا، {words} كلمة، {lines} سطرًا، {paras} فقرة"
+
+
+msgid ""
+"- Added full compatibility for NVDA 2026.1 (Python 64-bit).\n"
+"- Refactored all global shortcuts into a unified Command Layer (Ctrl+Alt+C) to prevent conflicts. Press F1 after the command layer trigger to view all available commands.\n"
+"- Introduced an unlimited Clipboard History manager with complete CRUD capabilities (H in the command layer).\n"
+"- Added Append Mode (A in the command layer) to seamlessly collect multiple texts by concatenating new copies.\n"
+"- Restructured the Editor dialog by moving tools into a dedicated Tools menu.\n"
+"- Restored the ability to speak clipboard content without character limit (S in the command layer).\n"
+"- Added settings to configure the maximum Clipboard History size and override the addon's display language independently of NVDA.\n"
+"- Fixed a bug where the Editor dialog would freeze or hang after successfully saving a file via 'Save As...'.\n"
+"- Integrated a Development Support (PayPal donation) dialog into the installation flow.\n"
+"- Added paragraph counting to the Information feature (characters, words, lines, and paragraphs)."
+msgstr ""
+"- إضافة التوافق الكامل مع NVDA 2026.1 (Python 64-bit).\n"
+"- إعادة هيكلة جميع الاختصارات العامة إلى طبقة أوامر موحدة (Ctrl+Alt+C) لمنع التعارضات. اضغط F1 بعد مشغل طبقة الأوامر لعرض جميع الأوامر المتاحة.\n"
+"- تقديم مدير محفوظات الحافظة غير المحدود مع قدرات CRUD الكاملة (H في طبقة الأوامر).\n"
+"- إضافة وضع الإلحاق (A في طبقة الأوامر) لجمع نصوص متعددة بسلاسة عن طريق ربط النسخ الجديدة.\n"
+"- إعادة هيكلة مربع حوار المحرر عن طريق نقل الأدوات إلى قائمة أدوات مخصصة.\n"
+"- استعادة القدرة على نطق محتوى الحافظة بدون حد للأحرف (S في طبقة الأوامر).\n"
+"- إضافة إعدادات لتكوين الحد الأقصى لحجم محفوظات الحافظة وتجاوز لغة عرض الإضافة بشكل مستقل عن NVDA.\n"
+"- إصلاح خطأ حيث يتجمد مربع حوار المحرر أو يعلق بعد حفظ ملف بنجاح عبر 'حفظ باسم...'.\n"
+"- دمج مربع حوار دعم التطوير (تبرع PayPal) في تدفق التثبيت.\n"
+"- إضافة ميزة عد الفقرات إلى ميزة المعلومات (الأحرف والكلمات والأسطر والفقرات)."
+

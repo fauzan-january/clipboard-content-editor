@@ -1,3 +1,20 @@
+# Clipboard Content Editor Changelog
+
+## Version 1.3.0
+
+- Added full compatibility for NVDA 2026.1 (Python 64-bit).
+- Refactored all global shortcuts into a unified Command Layer (`Ctrl+Alt+C`) to prevent conflicts with other addons and applications. Press `F1` after the command layer trigger to view all available commands in a dialog.
+- Introduced an unlimited Clipboard History manager with complete CRUD (Create, Read, Update, Delete) capabilities. Press `H` in the command layer to view and manage past clipboard items.
+- Added Append Mode (`A` in the command layer) which allows you to seamlessly collect multiple texts by concatenating new copies to the existing clipboard.
+- Restructured the Editor dialog by moving Information, Find, and Replace into a dedicated "Tools" menu alongside *Change Case* (UPPERCASE, lowercase, Title Case), *Text Cleaner* (Trim Whitespace, Remove Empty Lines, Strip Formatting), and a new *Speech* option.
+- Restored the ability to speak clipboard content without character limit (`S` in the command layer).
+- Added confirmation dialogs before deleting or clearing items in the Clipboard History manager.
+- Added settings to configure the maximum Clipboard History size and override the addon's display language independently of NVDA.
+- Fixed a bug where the Editor dialog would freeze or hang after successfully saving a file via "Save As...".
+- Enhanced the F1 help menu to display an inline command list dialog or open the full HTML README documentation.
+- Integrated a Development Support (PayPal donation) dialog into the installation flow.
+- Added paragraph counting to the Information feature (characters, words, lines, and paragraphs).
+
 ## Changelog - Version 1.2.3
 
 - Added Arabic language support.

@@ -275,3 +275,46 @@ msgstr ""
 "- Кнопки редактора тепер розташовані в строгому порядку для кращої "
 "навігації: Інформація -> Знайти -> Замінити -> Зберегти -> Зберегти як -> "
 "Скасувати."
+
+msgid "Clipboard Content Editor Installation"
+msgstr "Встановлення Clipboard Content Editor"
+
+msgid "Welcome to Clipboard Content Editor! Before continuing the installation, what would you like to do?"
+msgstr "Ласкаво просимо до Clipboard Content Editor! Перш ніж продовжити встановлення, що б ви хотіли зробити?"
+
+msgid "&1. See What's New"
+msgstr "&1. Дізнатись, що нового"
+
+msgid "&2. Support Development (Donate)"
+msgstr "&2. Підтримати розробку (Пожертвувати)"
+
+msgid "&3. Continue Installation"
+msgstr "&3. Продовжити встановлення"
+
+msgid "Clipboard information: {chars} characters, {words} words, {lines} lines, {paras} paragraphs"
+msgstr "Інформація про буфер обміну: {chars} символів, {words} слів, {lines} рядків, {paras} абзаців"
+
+
+msgid ""
+"- Added full compatibility for NVDA 2026.1 (Python 64-bit).\n"
+"- Refactored all global shortcuts into a unified Command Layer (Ctrl+Alt+C) to prevent conflicts. Press F1 after the command layer trigger to view all available commands.\n"
+"- Introduced an unlimited Clipboard History manager with complete CRUD capabilities (H in the command layer).\n"
+"- Added Append Mode (A in the command layer) to seamlessly collect multiple texts by concatenating new copies.\n"
+"- Restructured the Editor dialog by moving tools into a dedicated Tools menu.\n"
+"- Restored the ability to speak clipboard content without character limit (S in the command layer).\n"
+"- Added settings to configure the maximum Clipboard History size and override the addon's display language independently of NVDA.\n"
+"- Fixed a bug where the Editor dialog would freeze or hang after successfully saving a file via 'Save As...'.\n"
+"- Integrated a Development Support (PayPal donation) dialog into the installation flow.\n"
+"- Added paragraph counting to the Information feature (characters, words, lines, and paragraphs)."
+msgstr ""
+"- Додано повну сумісність з NVDA 2026.1 (Python 64-bit).\n"
+"- Рефакторинг усіх глобальних гарячих клавіш у єдиний Командний рівень (Ctrl+Alt+C) для запобігання конфліктам. Натисніть F1 після виклику командного рівня, щоб переглянути всі доступні команди.\n"
+"- Представлено необмежений менеджер історії буфера обміну з повними можливостями CRUD (H у командному рівні).\n"
+"- Додано режим додавання (A у командному рівні) для зручного збору кількох текстів шляхом об’єднання нових копій.\n"
+"- Реструктуризовано діалог редактора шляхом переміщення інструментів у спеціальне меню інструментів.\n"
+"- Відновлено можливість промовляти вміст буфера обміну без обмеження символів (S у командному рівні).\n"
+"- Додано налаштування для конфігурації максимального розміру історії буфера обміну та зміни мови відображення доповнення незалежно від NVDA.\n"
+"- Виправлено помилку, через яку діалог редактора зависав або зупинявся після успішного збереження файлу через «Зберегти як...».\n"
+"- Інтегровано діалог підтримки розробки (пожертвування PayPal) у процес встановлення.\n"
+"- Додано підрахунок абзаців до функції «Інформація» (символи, слова, рядки та абзаци)."
+

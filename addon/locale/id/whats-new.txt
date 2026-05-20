@@ -1,12 +1,13 @@
 Apa yang Baru?
 
-Versi 1.2.3
-- Menambahkan dukungan bahasa Arab.
-- Tidak ada pembaruan fitur lainnya.
-
-Versi 1.2.2
-- Menambahkan fitur Save As (Ctrl+Shift+S) ke editor, konten bisa disimpan sebagai .txt atau tipe file lainnya.
-- Menambahkan opsi untuk mengaktifkan atau menonaktifkan suara add-on.
-- Menambahkan umpan balik suara pada fitur Information, Restore Backup, dan Replace All agar konsisten.
-- Memperbaiki link "Read in [Language]" di dokumentasi yang sebelumnya error (file not found) atau membuka source file mentah.
-- Urutan tombol editor dirapikan: Information (Alt+I) -> Find -> Replace -> Save -> Save As -> Cancel.
+Versi 1.3.0
+- Menambahkan kompatibilitas penuh untuk NVDA 2026.1 (Python 64-bit).
+- Memfaktorkan ulang semua pintasan global menjadi Lapisan Perintah terpadu (Ctrl+Alt+C) untuk mencegah bentrokan. Tekan F1 setelah pemicu lapisan perintah untuk melihat semua perintah yang tersedia.
+- Memperkenalkan pengelola Riwayat Papan Klip tak terbatas dengan kemampuan CRUD penuh (H di lapisan perintah).
+- Menambahkan Mode Tambah (A di lapisan perintah) untuk mengumpulkan beberapa teks secara mulus dengan menggabungkan salinan baru.
+- Merestrukturisasi dialog Editor dengan memindahkan alat ke dalam menu Alat khusus.
+- Mengembalikan kemampuan untuk membacakan konten papan klip tanpa batas karakter (S di lapisan perintah).
+- Menambahkan pengaturan untuk mengonfigurasi ukuran maksimum Riwayat Papan Klip dan menimpa bahasa tampilan addon terlepas dari NVDA.
+- Memperbaiki bug di mana dialog Editor akan macet atau hang setelah berhasil menyimpan file melalui 'Simpan Sebagai...'.
+- Mengintegrasikan dialog Dukungan Pengembangan (donasi PayPal) ke dalam alur instalasi.
+- Menambahkan penghitungan paragraf pada fitur Informasi (karakter, kata, baris, dan paragraf).

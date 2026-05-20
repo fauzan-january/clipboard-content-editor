@@ -21,16 +21,16 @@ msgid "Do you want to continue installation or see what's new first?"
 msgstr "Apakah Anda ingin melanjutkan instalasi atau melihat apa yang baru terlebih dahulu?"
 
 msgid "&See what's new"
-msgstr "Lihat Apa yang Baru (&S)"
+msgstr "Lihat Apa yang Baru"
 
 msgid "&Continue Installation"
-msgstr "Lanjutkan Instalasi (&C)"
+msgstr "Lanjutkan Instalasi"
 
 msgid "What's new information is unavailable."
 msgstr "Informasi Apa yang Baru tidak tersedia."
 
 msgid "&OK"
-msgstr "&OK"
+msgstr "OK"
 
 msgid "Clipboard information: {chars} characters, {words} words, {lines} lines"
 msgstr "Informasi clipboard: {chars} karakter, {words} kata, {lines} baris"
@@ -45,13 +45,13 @@ msgid "Clipboard content:"
 msgstr "Isi clipboard:"
 
 msgid "&Information"
-msgstr "&Informasi"
+msgstr "Informasi"
 
 msgid "&Find"
-msgstr "Cari (&F)"
+msgstr "Cari"
 
 msgid "&Replace"
-msgstr "Ganti (&R)"
+msgstr "Ganti"
 
 msgid "Save (Ctrl+S)"
 msgstr "Simpan (Ctrl+S)"
@@ -165,3 +165,210 @@ msgstr "Gagal menyimpan file: {error}"
 
 msgid "Enable &sound"
 msgstr "Aktifkan &suara"
+
+msgid "&Tools"
+msgstr "Alat"
+
+msgid "&Speech"
+msgstr "Ucapan"
+
+
+msgid "Convert to &uppercase"
+msgstr "Ubah ke huruf &besar"
+
+msgid "Convert to &lowercase"
+msgstr "Ubah ke huruf &kecil"
+
+msgid "Convert to &title case"
+msgstr "Ubah ke format &judul"
+
+msgid "Trim &whitespace"
+msgstr "Hapus spasi tambahan"
+
+msgid "Remove &empty lines"
+msgstr "Hapus ba&ris kosong"
+
+msgid "Strip &HTML/Formatting"
+msgstr "Hapus format HTML"
+
+msgid "Clipboard History"
+msgstr "Riwayat Papan Klip"
+
+msgid "Restore selected item"
+msgstr "Pulihkan item yang dipilih"
+
+msgid "Edit selected item"
+msgstr "Edit item yang dipilih"
+
+msgid "Delete selected item"
+msgstr "Hapus item yang dipilih"
+
+msgid "Clear all history"
+msgstr "Bersihkan semua riwayat"
+
+msgid "History size: {size}"
+msgstr "Ukuran riwayat: {size}"
+
+msgid "Are you sure you want to delete this item?"
+msgstr "Apakah Anda yakin ingin menghapus item ini?"
+
+msgid "Confirm Deletion"
+msgstr "Konfirmasi Penghapusan"
+
+msgid "Are you sure you want to clear the entire clipboard history?"
+msgstr "Apakah Anda yakin ingin membersihkan seluruh riwayat papan klip?"
+
+msgid "Confirm Clear All"
+msgstr "Konfirmasi Bersihkan Semua"
+
+msgid "Default (NVDA Language)"
+msgstr "Bawaan (Bahasa NVDA)"
+
+msgid "Addon Language (requires NVDA restart to fully apply)"
+msgstr "Bahasa Addon (membutuhkan restart NVDA untuk menerapkannya)"
+
+msgid "Clipboard History Limit"
+msgstr "Batas Riwayat Papan Klip"
+
+msgid "10 Items"
+msgstr "10 Item"
+
+msgid "25 Items"
+msgstr "25 Item"
+
+msgid "50 Items"
+msgstr "50 Item"
+
+msgid "100 Items"
+msgstr "100 Item"
+
+msgid "Unlimited"
+msgstr "Tidak Terbatas"
+
+msgid "Clipboard Content Editor Command List"
+msgstr "Daftar Perintah Clipboard Content Editor"
+
+msgid "What do you want to show?"
+msgstr "Apa yang ingin Anda tampilkan?"
+
+msgid "Command List"
+msgstr "Daftar Perintah"
+
+msgid "Full Documentation"
+msgstr "Dokumentasi Lengkap"
+
+msgid "Clipboard Content Editor Command List\n--------------------\nF1: Open Command List or Full Documentation\nA: On / Off Append Mode\nE: Open Clipboard Editor\nR: Restore Editor Backup\nI: Say Clipboard Information\nS: Speak Clipboard Content\nH: Open Clipboard History Manager"
+msgstr "Daftar Perintah Clipboard Content Editor\n--------------------\nF1: Buka Daftar Perintah atau Dokumentasi Lengkap\nA: Aktifkan / Nonaktifkan Mode Tambal\nE: Buka Editor Papan Klip\nR: Pulihkan Cadangan Editor\nI: Ucapkan Informasi Papan Klip\nS: Bacakan Konten Papan Klip\nH: Buka Manajer Riwayat Papan Klip"
+
+msgid "Clipboard Content Editor Documentation"
+msgstr "Dokumentasi Clipboard Content Editor"
+
+msgid "&Copy to Clipboard"
+msgstr "Salin ke Papan Klip"
+
+msgid "&Open in Browser"
+msgstr "Buka di Browser"
+
+msgid "&Close"
+msgstr "Tutup"
+
+msgid "Text successfully copied."
+msgstr "Teks berhasil disalin."
+
+msgid "Failed to copy text."
+msgstr "Gagal menyalin teks."
+
+msgid "Document is not available."
+msgstr "Dokumen tidak tersedia."
+
+msgid "Please restart NVDA to apply the language change."
+msgstr "Silakan mulai ulang NVDA untuk menerapkan perubahan bahasa."
+
+msgid "Restart Required"
+msgstr "Dibutuhkan Mulai Ulang"
+
+msgid " "
+msgstr " "
+
+msgid "Appended"
+msgstr "Ditambahkan"
+
+msgid "Exited Clipboard Content Editor command layer"
+msgstr "Keluar dari lapisan perintah Clipboard Content Editor"
+
+msgid "Activates Clipboard Content Editor command layer"
+msgstr "Mengaktifkan lapisan perintah Clipboard Content Editor"
+
+msgid "Enter Clipboard Content Editor command layer. Press F1 for help."
+msgstr "Masuk ke lapisan perintah Clipboard Content Editor. Tekan F1 untuk bantuan"
+
+msgid "Append mode on"
+msgstr "Mode tambal diaktifkan"
+
+msgid "Append mode off"
+msgstr "Mode tambal dinonaktifkan"
+
+msgid "Recent clipboard items:"
+msgstr "Item papan klip terbaru:"
+
+msgid "&Restore"
+msgstr "Pulihkan"
+
+msgid "&Edit"
+msgstr "Edit"
+
+msgid "&Delete"
+msgstr "Hapus"
+
+msgid "&Clear All"
+msgstr "Bersihkan Semua"
+
+msgid "&Action"
+msgstr "Aksi"
+
+
+msgid "Language changed. A restart of NVDA is required to fully apply the new language. Restart now?"
+msgstr "Bahasa diubah. Anda harus merestart NVDA agar bahasa baru dapat diterapkan sepenuhnya. Restart sekarang?"
+
+msgid "Clipboard Content Editor Installation"
+msgstr "Instalasi Clipboard Content Editor"
+
+msgid "Welcome to Clipboard Content Editor! Before continuing the installation, what would you like to do?"
+msgstr "Selamat datang di Clipboard Content Editor! Sebelum melanjutkan instalasi, apa yang ingin Anda lakukan?"
+
+msgid "&1. See What's New"
+msgstr "&1. Lihat Apa yang Baru"
+
+msgid "&2. Support Development (Donate)"
+msgstr "&2. Dukung Pengembangan (Donasi)"
+
+msgid "&3. Continue Installation"
+msgstr "&3. Lanjutkan Instalasi"
+
+msgid "Clipboard information: {chars} characters, {words} words, {lines} lines, {paras} paragraphs"
+msgstr "Informasi papan klip: {chars} karakter, {words} kata, {lines} baris, {paras} paragraf"
+
+
+msgid ""
+"- Added full compatibility for NVDA 2026.1 (Python 64-bit).\n"
+"- Refactored all global shortcuts into a unified Command Layer (Ctrl+Alt+C) to prevent conflicts. Press F1 after the command layer trigger to view all available commands.\n"
+"- Introduced an unlimited Clipboard History manager with complete CRUD capabilities (H in the command layer).\n"
+"- Added Append Mode (A in the command layer) to seamlessly collect multiple texts by concatenating new copies.\n"
+"- Restructured the Editor dialog by moving tools into a dedicated Tools menu.\n"
+"- Restored the ability to speak clipboard content without character limit (S in the command layer).\n"
+"- Added settings to configure the maximum Clipboard History size and override the addon's display language independently of NVDA.\n"
+"- Fixed a bug where the Editor dialog would freeze or hang after successfully saving a file via 'Save As...'.\n"
+"- Integrated a Development Support (PayPal donation) dialog into the installation flow.\n"
+"- Added paragraph counting to the Information feature (characters, words, lines, and paragraphs)."
+msgstr ""
+"- Menambahkan kompatibilitas penuh untuk NVDA 2026.1 (Python 64-bit).\n"
+"- Memfaktorkan ulang semua pintasan global menjadi Lapisan Perintah terpadu (Ctrl+Alt+C) untuk mencegah bentrokan. Tekan F1 setelah pemicu lapisan perintah untuk melihat semua perintah yang tersedia.\n"
+"- Memperkenalkan pengelola Riwayat Papan Klip tak terbatas dengan kemampuan CRUD penuh (H di lapisan perintah).\n"
+"- Menambahkan Mode Tambah (A di lapisan perintah) untuk mengumpulkan beberapa teks secara mulus dengan menggabungkan salinan baru.\n"
+"- Merestrukturisasi dialog Editor dengan memindahkan alat ke dalam menu Alat khusus.\n"
+"- Mengembalikan kemampuan untuk membacakan konten papan klip tanpa batas karakter (S di lapisan perintah).\n"
+"- Menambahkan pengaturan untuk mengonfigurasi ukuran maksimum Riwayat Papan Klip dan menimpa bahasa tampilan addon terlepas dari NVDA.\n"
+"- Memperbaiki bug di mana dialog Editor akan macet atau hang setelah berhasil menyimpan file melalui 'Simpan Sebagai...'.\n"
+"- Mengintegrasikan dialog Dukungan Pengembangan (donasi PayPal) ke dalam alur instalasi.\n"
+"- Menambahkan penghitungan paragraf pada fitur Informasi (karakter, kata, baris, dan paragraf)."
+

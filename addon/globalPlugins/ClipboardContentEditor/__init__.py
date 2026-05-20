@@ -17,33 +17,90 @@ from scriptHandler import script
 
 addonHandler.initTranslation()
 
+class InfoDialog(wx.Dialog):
+	def __init__(self, parent, title, content, url=None):
+		super().__init__(parent, title=title, size=(600, 400), style=wx.DEFAULT_DIALOG_STYLE | wx.RESIZE_BORDER)
+		self.url = url
+		self.content = content
+		sizer = wx.BoxSizer(wx.VERTICAL)
+		self.textCtrl = wx.TextCtrl(self, value=content, style=wx.TE_MULTILINE | wx.TE_READONLY | wx.TE_RICH2)
+		sizer.Add(self.textCtrl, 1, wx.EXPAND | wx.ALL, 10)
+		btnSizer = wx.BoxSizer(wx.HORIZONTAL)
+		self.btnCopy = wx.Button(self, label=_("&Copy to Clipboard"))
+		self.btnCopy.Bind(wx.EVT_BUTTON, self.onCopy)
+		btnSizer.Add(self.btnCopy, 0, wx.ALL, 5)
+		if self.url:
+			self.btnOpen = wx.Button(self, label=_("&Open in Browser"))
+			self.btnOpen.Bind(wx.EVT_BUTTON, self.onOpen)
+			btnSizer.Add(self.btnOpen, 0, wx.ALL, 5)
+		self.btnClose = wx.Button(self, wx.ID_CANCEL, label=_("&Close"))
+		btnSizer.Add(self.btnClose, 0, wx.ALL, 5)
+		sizer.Add(btnSizer, 0, wx.ALIGN_RIGHT | wx.BOTTOM, 10)
+		self.SetSizer(sizer)
+		self.Centre()
+		self.textCtrl.SetFocus()
+
+	def onCopy(self, event):
+		if wx.TheClipboard.Open():
+			wx.TheClipboard.SetData(wx.TextDataObject(self.content))
+			wx.TheClipboard.Close()
+			ui.message(_("Text successfully copied."))
+		else:
+			ui.message(_("Failed to copy text."))
+
+	def onOpen(self, event):
+		if self.url:
+			import webbrowser
+			webbrowser.open(self.url)
+
 ADDON_SUMMARY = addonHandler.getCodeAddon().manifest["summary"]
 
 confspec = {
 	"protectModeEnabled": "boolean(default=True)",
 	"backupLevels": "integer(default=1)",
-	"summaryButtonEnabled": "boolean(default=True)",
-	"findButtonEnabled": "boolean(default=True)",
-	"findReplaceButtonEnabled": "boolean(default=True)",
-	"shortcutsWhenHiddenEnabled": "boolean(default=True)",
 	"soundEnabled": "boolean(default=True)",
+	"historySize": "string(default='10')",
+	"language": "string(default='default')",
 }
 config.conf.spec["ClipboardContentEditor"] = confspec
+
+if "ClipboardContentEditor" not in config.conf:
+	config.conf["ClipboardContentEditor"] = {}
+
+try:
+	lang = config.conf["ClipboardContentEditor"].get("language", "default")
+	if lang != "default":
+		import gettext
+		import os
+		import inspect
+		addon_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+		locale_dir = os.path.join(addon_dir, "locale")
+		t = gettext.translation("nvda", localedir=locale_dir, languages=[lang])
+		frame = inspect.currentframe()
+		if frame:
+			frame.f_globals["_"] = t.gettext
+except Exception:
+	pass
 
 
 def _buildInformationMessage(text):
 	charCount = len(text)
 	wordCount = len(text.split())
 	lineCount = len(text.splitlines()) if text else 0
-	return _("Clipboard information: {chars} characters, {words} words, {lines} lines").format(
+	# Paragraphs are separated by empty lines (double newline)
+	import re
+	paraCount = len([p for p in re.split(r'\n\s*\n', text) if p.strip()]) if text else 0
+	
+	return _("Clipboard information: {chars} characters, {words} words, {lines} lines, {paras} paragraphs").format(
 		chars=charCount,
 		words=wordCount,
 		lines=lineCount,
+		paras=paraCount,
 	)
 
 
 def _playSound(hz, duration):
-	if config.conf["ClipboardContentEditor"]["soundEnabled"]:
+	if config.conf["ClipboardContentEditor"].get("soundEnabled", True):
 		tones.beep(hz, duration)
 
 
@@ -178,10 +235,6 @@ class ClipboardEditorDialog(wx.Dialog):
 		initialText,
 		onClose,
 		onSave=None,
-		enableSummaryButton=True,
-		enableFindButton=True,
-		enableFindReplaceButton=True,
-		shortcutsWhenHiddenEnabled=True,
 	):
 		super().__init__(
 			parent,
@@ -194,10 +247,6 @@ class ClipboardEditorDialog(wx.Dialog):
 		self._resultMessage = None
 		self._resultKind = None
 		self._closing = False
-		self._enableSummaryButton = enableSummaryButton
-		self._enableFindButton = enableFindButton
-		self._enableReplaceButton = enableFindReplaceButton
-		self._shortcutsWhenHiddenEnabled = shortcutsWhenHiddenEnabled
 		self._findDialog = None
 		self._findOnlyDialog = None
 
@@ -215,22 +264,11 @@ class ClipboardEditorDialog(wx.Dialog):
 		mainSizer.Add(textSizer, proportion=1, flag=wx.ALL | wx.EXPAND, border=8)
 
 		buttonSizer = wx.BoxSizer(wx.HORIZONTAL)
-		self._informationMenuId = wx.NewIdRef()
-		self._findMenuId = wx.NewIdRef()
-		self._replaceMenuId = wx.NewIdRef()
-		if self._enableSummaryButton:
-			self._informationButton = wx.Button(
-				self,
-				id=self._informationMenuId,
-				label=_("&Information"),
-			)
-			buttonSizer.Add(self._informationButton, flag=wx.RIGHT, border=5)
-		if self._enableFindButton:
-			self._findButton = wx.Button(self, id=self._findMenuId, label=_("&Find"))
-			buttonSizer.Add(self._findButton, flag=wx.RIGHT, border=5)
-		if self._enableReplaceButton:
-			self._replaceButton = wx.Button(self, id=self._replaceMenuId, label=_("&Replace"))
-			buttonSizer.Add(self._replaceButton, flag=wx.RIGHT, border=5)
+		
+		self._toolsMenuId = wx.NewIdRef()
+		self._toolsButton = wx.Button(self, id=self._toolsMenuId, label=_("&Tools"))
+		buttonSizer.Add(self._toolsButton, flag=wx.RIGHT, border=5)
+
 		self._saveButton = wx.Button(self, wx.ID_SAVE, label=_("Save (Ctrl+S)"))
 		self._saveAsId = wx.NewIdRef()
 		self._saveAsButton = wx.Button(self, self._saveAsId, label=_("Save As... (Ctrl+Shift+S)"))
@@ -248,37 +286,17 @@ class ClipboardEditorDialog(wx.Dialog):
 		self._saveButton.Bind(wx.EVT_BUTTON, self.onSave)
 		self._saveAsButton.Bind(wx.EVT_BUTTON, self.onSaveAs)
 		self._cancelButton.Bind(wx.EVT_BUTTON, self.onCancel)
-		if self._enableFindButton:
-			self._findButton.Bind(wx.EVT_BUTTON, self.onFindDialog)
-		if self._enableReplaceButton:
-			self._replaceButton.Bind(wx.EVT_BUTTON, self.onReplaceDialog)
+		self._toolsButton.Bind(wx.EVT_BUTTON, self.onToolsMenu)
 		self.Bind(wx.EVT_CLOSE, self.onClose)
 		self.Bind(wx.EVT_MENU, self.onSave, id=wx.ID_SAVE)
 		self.Bind(wx.EVT_MENU, self.onSaveAs, id=self._saveAsId)
 		self.Bind(wx.EVT_MENU, self.onCancel, id=wx.ID_CANCEL)
-		if self._enableFindButton or self._shortcutsWhenHiddenEnabled:
-			self.Bind(wx.EVT_MENU, self.onFindDialog, id=self._findMenuId)
-		if self._enableReplaceButton or self._shortcutsWhenHiddenEnabled:
-			self.Bind(wx.EVT_MENU, self.onReplaceDialog, id=self._replaceMenuId)
-		if self._enableSummaryButton or self._shortcutsWhenHiddenEnabled:
-			self.Bind(wx.EVT_MENU, self.onInformation, id=self._informationMenuId)
-		if self._enableSummaryButton:
-			self._informationButton.Bind(wx.EVT_BUTTON, self.onInformation)
 
-		accels = []
-		if self._enableSummaryButton or self._shortcutsWhenHiddenEnabled:
-			accels.append((wx.ACCEL_ALT, ord("I"), int(self._informationMenuId)))
-		if self._enableFindButton or self._shortcutsWhenHiddenEnabled:
-			accels.append((wx.ACCEL_ALT, ord("F"), int(self._findMenuId)))
-		if self._enableReplaceButton or self._shortcutsWhenHiddenEnabled:
-			accels.append((wx.ACCEL_ALT, ord("R"), int(self._replaceMenuId)))
-		accels.extend(
-			[
-				(wx.ACCEL_CTRL, ord("S"), wx.ID_SAVE),
-				(wx.ACCEL_CTRL | wx.ACCEL_SHIFT, ord("S"), self._saveAsId),
-				(wx.ACCEL_NORMAL, wx.WXK_ESCAPE, wx.ID_CANCEL),
-			],
-		)
+		accels = [
+			(wx.ACCEL_CTRL, ord("S"), wx.ID_SAVE),
+			(wx.ACCEL_CTRL | wx.ACCEL_SHIFT, ord("S"), self._saveAsId),
+			(wx.ACCEL_NORMAL, wx.WXK_ESCAPE, wx.ID_CANCEL),
+		]
 		self.SetAcceleratorTable(wx.AcceleratorTable(accels))
 
 	def onSave(self, evt):
@@ -314,11 +332,85 @@ class ClipboardEditorDialog(wx.Dialog):
 					f.write(text)
 				self._resultMessage = _("File saved")
 				self._resultKind = "saved"
-				self._announceAndClose()
+				wx.CallAfter(self._announceAndClose)
 			except Exception as e:
 				self._resultMessage = _("Error saving file: {error}").format(error=str(e))
 				self._resultKind = "failed"
-				self._announceAndClose()
+				wx.CallAfter(self._announceAndClose)
+
+	def onToolsMenu(self, evt):
+		menu = wx.Menu()
+		idSpeech = wx.NewIdRef()
+		idInfo = wx.NewIdRef()
+		idFind = wx.NewIdRef()
+		idReplace = wx.NewIdRef()
+		idUpper = wx.NewIdRef()
+		idLower = wx.NewIdRef()
+		idTitle = wx.NewIdRef()
+		idTrim = wx.NewIdRef()
+		idRemoveEmpty = wx.NewIdRef()
+		idStripHtml = wx.NewIdRef()
+
+		menu.Append(idSpeech, _("&Speech"))
+		menu.Append(idInfo, _("&Information"))
+		menu.Append(idFind, _("&Find"))
+		menu.Append(idReplace, _("&Replace"))
+		menu.AppendSeparator()
+		menu.Append(idUpper, _("Convert to &uppercase"))
+		menu.Append(idLower, _("Convert to &lowercase"))
+		menu.Append(idTitle, _("Convert to &title case"))
+		menu.AppendSeparator()
+		menu.Append(idTrim, _("Trim &whitespace"))
+		menu.Append(idRemoveEmpty, _("Remove &empty lines"))
+		menu.Append(idStripHtml, _("Strip &HTML/Formatting"))
+
+		self.Bind(wx.EVT_MENU, lambda e: wx.CallLater(100, ui.message, self._textCtrl.GetValue()), id=idSpeech)
+		self.Bind(wx.EVT_MENU, self.onInformation, id=idInfo)
+		self.Bind(wx.EVT_MENU, self.onFindDialog, id=idFind)
+		self.Bind(wx.EVT_MENU, self.onReplaceDialog, id=idReplace)
+		self.Bind(wx.EVT_MENU, lambda e: self._applyTextChange("upper"), id=idUpper)
+		self.Bind(wx.EVT_MENU, lambda e: self._applyTextChange("lower"), id=idLower)
+		self.Bind(wx.EVT_MENU, lambda e: self._applyTextChange("title"), id=idTitle)
+		self.Bind(wx.EVT_MENU, lambda e: self._applyTextChange("trim"), id=idTrim)
+		self.Bind(wx.EVT_MENU, lambda e: self._applyTextChange("remove_empty"), id=idRemoveEmpty)
+		self.Bind(wx.EVT_MENU, lambda e: self._applyTextChange("strip_html"), id=idStripHtml)
+
+		self._toolsButton.PopupMenu(menu)
+		menu.Destroy()
+
+	def _applyTextChange(self, action):
+		selStart, selEnd = self._textCtrl.GetSelection()
+		text = self._textCtrl.GetValue()
+		hasSelection = selStart != selEnd
+
+		if hasSelection:
+			targetText = text[selStart:selEnd]
+		else:
+			targetText = text
+
+		if action == "upper":
+			newText = targetText.upper()
+		elif action == "lower":
+			newText = targetText.lower()
+		elif action == "title":
+			newText = targetText.title()
+		elif action == "trim":
+			newText = "\n".join([line.strip() for line in targetText.splitlines()])
+		elif action == "remove_empty":
+			newText = "\n".join([line for line in targetText.splitlines() if line.strip()])
+		elif action == "strip_html":
+			import re
+			newText = re.sub(r'<[^>]+>', '', targetText)
+		else:
+			return
+
+		if newText != targetText:
+			if hasSelection:
+				self._textCtrl.Replace(selStart, selEnd, newText)
+				self._textCtrl.SetSelection(selStart, selStart + len(newText))
+			else:
+				self._textCtrl.SetValue(newText)
+			_playSound(500, 50)
 
 	def onCancel(self, evt):
 		if self._textCtrl.GetValue() == self._initialText:
@@ -352,10 +444,10 @@ class ClipboardEditorDialog(wx.Dialog):
 	def onInformation(self, evt):
 		text = self._textCtrl.GetValue()
 		if not text:
-			_announceClipboardEmpty()
+			wx.CallLater(100, _announceClipboardEmpty)
 			return
 		_playSound(660, 60)
-		ui.message(_buildInformationMessage(text))
+		wx.CallLater(100, ui.message, _buildInformationMessage(text))
 
 	def onReplaceDialog(self, evt):
 		_playSound(500, 50)
@@ -436,26 +528,95 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	def __init__(self):
 		super().__init__()
 		self._editorDialog = None
+		self._historyDialog = None
 		self._backupHistory = []
+		self._clipboardHistory = []
+		self._appendModeEnabled = False
+		self._lastClipboardText = None
+		self._evtHandler = wx.EvtHandler()
+		self._clipTimer = wx.Timer(self._evtHandler)
+		self._evtHandler.Bind(wx.EVT_TIMER, self._onClipTimer, self._clipTimer)
+		self._clipTimer.Start(1000)
 		NVDASettingsDialog.categoryClasses.append(AddonSettingsPanel)
 
+		self.switch = False
+		self.commandLayerGestures = {
+			"kb:e": "openEditor",
+			"kb:r": "restorePrevious",
+			"kb:i": "informationClipboard",
+			"kb:s": "speakClipboard",
+			"kb:h": "showHistory",
+			"kb:a": "toggleAppendMode",
+			"kb:f1": "showHelp",
+			"kb:escape": "exitLayer",
+		}
+
 	def terminate(self):
+		self._clipTimer.Stop()
 		if self._editorDialog:
 			try:
 				self._editorDialog.Destroy()
 			except Exception:
 				pass
 			self._editorDialog = None
+		if self._historyDialog:
+			try:
+				self._historyDialog.Destroy()
+			except Exception:
+				pass
+			self._historyDialog = None
 		NVDASettingsDialog.categoryClasses.remove(AddonSettingsPanel)
 		super().terminate()
 
+	def _onClipTimer(self, evt=None):
+		try:
+			currentText = api.getClipData()
+		except Exception:
+			return
+		
+		if not currentText:
+			return
+
+		if self._lastClipboardText is None:
+			self._lastClipboardText = currentText
+			if currentText not in self._clipboardHistory:
+				self._clipboardHistory.insert(0, currentText)
+			return
+
+		if currentText != self._lastClipboardText:
+			if self._appendModeEnabled:
+				combined = self._lastClipboardText + "\r\n" + currentText
+				try:
+					if _copyTextToClipboard(combined):
+						self._lastClipboardText = combined
+						ui.message(_("Appended"))
+						if combined not in self._clipboardHistory:
+							self._clipboardHistory.insert(0, combined)
+				except Exception:
+					pass
+			else:
+				self._lastClipboardText = currentText
+				if currentText in self._clipboardHistory:
+					self._clipboardHistory.remove(currentText)
+				self._clipboardHistory.insert(0, currentText)
+				
+				# Limit history size
+				size_limit_str = config.conf["ClipboardContentEditor"].get("historySize", "10")
+				if size_limit_str.lower() != "all":
+					try:
+						limit = int(size_limit_str)
+						if len(self._clipboardHistory) > limit:
+							self._clipboardHistory = self._clipboardHistory[:limit]
+					except ValueError:
+						pass
+
 	def _backupClipboard(self, previousText):
-		if not config.conf["ClipboardContentEditor"]["protectModeEnabled"]:
+		if not config.conf["ClipboardContentEditor"].get("protectModeEnabled", True):
 			return
 		if previousText is None:
 			return
 		self._backupHistory.insert(0, previousText)
-		maxLevels = max(1, int(config.conf["ClipboardContentEditor"]["backupLevels"]))
+		maxLevels = max(1, int(config.conf["ClipboardContentEditor"].get("backupLevels", 1)))
 		self._backupHistory = self._backupHistory[:maxLevels]
 
 	def _openEditor(self):
@@ -471,14 +632,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			text,
 			onClose=self._onEditorClosed,
 			onSave=self._backupClipboard,
-			enableSummaryButton=config.conf["ClipboardContentEditor"]["summaryButtonEnabled"],
-			enableFindButton=config.conf["ClipboardContentEditor"]["findButtonEnabled"],
-			enableFindReplaceButton=config.conf["ClipboardContentEditor"][
-				"findReplaceButtonEnabled"
-			],
-			shortcutsWhenHiddenEnabled=config.conf["ClipboardContentEditor"][
-				"shortcutsWhenHiddenEnabled"
-			],
 		)
 		self._editorDialog.Show()
 		self._editorDialog.Raise()
@@ -488,10 +641,49 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	def _onEditorClosed(self):
 		self._editorDialog = None
 
+	def getScript(self, gesture):
+		if self.switch:
+			script_name = None
+			for identifier in gesture.identifiers:
+				if identifier in self.commandLayerGestures:
+					script_name = "script_" + self.commandLayerGestures[identifier]
+					break
+			
+			if script_name:
+				target_script = getattr(self, script_name)
+				should_speak = (script_name == "script_exitLayer")
+				
+				def _wrapped_script(gesture, _speak=should_speak, _target=target_script):
+					self.closeCommandsLayer(speak=_speak)
+					if not _speak:
+						wx.CallLater(50, _target, gesture)
+					else:
+						_target(gesture)
+				return _wrapped_script
+			else:
+				self.closeCommandsLayer(speak=True)
+
+		return super().getScript(gesture)
+
+	def closeCommandsLayer(self, speak=True):
+		if self.switch:
+			_playSound(400, 100)
+		if speak:
+			ui.message(_("Exited Clipboard Content Editor command layer"))
+		self.switch = False
+
 	@script(
-		description=_("Opens a clipboard editor to modify the current clipboard text."),
-		gesture="kb:nvda+e",
+		description=_("Activates Clipboard Content Editor command layer"),
+		gesture="kb:control+alt+c"
 	)
+	def script_activateCommandLayer(self, gesture):
+		_playSound(800, 100)
+		ui.message(_("Enter Clipboard Content Editor command layer. Press F1 for help."))
+		self.switch = True
+
+	def script_exitLayer(self, gesture):
+		pass
+
 	def script_openEditor(self, gesture):
 		wx.CallAfter(self._openEditor)
 
@@ -509,22 +701,14 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		_playSound(660, 60)
 		ui.message(_buildInformationMessage(text))
 
-	@script(
-		description=_("Shows information about the current clipboard text."),
-		gesture="kb:nvda+i",
-	)
 	def script_informationClipboard(self, gesture):
 		if self._editorDialog and self._editorDialog.IsShown() and self._editorDialog.IsActive():
 			self._editorDialog.onInformation(gesture)
 			return
 		self._informationClipboard()
 
-	@script(
-		description=_("Restores the previous clipboard content from backup."),
-		gesture="kb:nvda+z",
-	)
 	def script_restorePrevious(self, gesture):
-		if not config.conf["ClipboardContentEditor"]["protectModeEnabled"]:
+		if not config.conf["ClipboardContentEditor"].get("protectModeEnabled", True):
 			ui.message(_("Protect mode is disabled"))
 			return
 		if not self._backupHistory:
@@ -533,11 +717,88 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			return
 		previousText = self._backupHistory.pop(0)
 		if api.copyToClip(previousText):
+			self._lastClipboardText = previousText
 			_playSound(880, 70)
 			ui.message(_("Previous clipboard restored"))
 		else:
 			_playSound(330, 100)
 			ui.message(_("Failed to restore clipboard"))
+
+	def script_speakClipboard(self, gesture):
+		text = self._getClipboardText()
+		if not text:
+			_announceClipboardEmpty()
+			return
+		ui.message(text)
+
+	def script_toggleAppendMode(self, gesture):
+		self._appendModeEnabled = not self._appendModeEnabled
+		if self._appendModeEnabled:
+			ui.message(_("Append mode on"))
+		else:
+			ui.message(_("Append mode off"))
+
+	def _openHistoryDialog(self):
+		if self._historyDialog and self._historyDialog.IsShown():
+			self._historyDialog.Raise()
+			return
+		self._historyDialog = ClipboardHistoryDialog(gui.mainFrame, self._clipboardHistory, self)
+		self._historyDialog.Show()
+		self._historyDialog.Raise()
+		_playSound(550, 60)
+
+	def script_showHistory(self, gesture):
+		wx.CallAfter(self._openHistoryDialog)
+
+	def script_showHelp(self, gesture):
+		def _show():
+			gui.mainFrame.prePopup()
+			try:
+				choices = [_("Command List"), _("Full Documentation")]
+				dlg = wx.SingleChoiceDialog(gui.mainFrame, _(" "), _("What do you want to show?"), choices)
+				dlg.SetSelection(0)
+				res = dlg.ShowModal()
+				sel = dlg.GetSelection()
+				dlg.Destroy()
+			finally:
+				gui.mainFrame.postPopup()
+			
+			if res == wx.ID_OK:
+				if sel == 0:
+					msg = _("Clipboard Content Editor Command List\n--------------------\nF1: Open Command List or Full Documentation\nA: On / Off Append Mode\nE: Open Clipboard Editor\nR: Restore Editor Backup\nI: Say Clipboard Information\nS: Speak Clipboard Content\nH: Open Clipboard History Manager")
+					
+					gui.mainFrame.prePopup()
+					try:
+						info_dlg = InfoDialog(gui.mainFrame, _("Clipboard Content Editor Command List"), msg)
+						info_dlg.ShowModal()
+						info_dlg.Destroy()
+					finally:
+						gui.mainFrame.postPopup()
+				elif sel == 1:
+					import os
+					import languageHandler
+					
+					lang = config.conf["ClipboardContentEditor"].get("language", "default")
+					if lang == "default":
+						lang = languageHandler.getLanguage()[:2]
+					
+					addon_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+					html_path = os.path.join(addon_dir, "doc", lang, "readme.html")
+					if not os.path.exists(html_path):
+						html_path = os.path.join(addon_dir, "doc", "id", "readme.html")
+					if not os.path.exists(html_path):
+						html_path = os.path.join(addon_dir, "doc", "en", "readme.html")
+					
+					if os.path.exists(html_path):
+						try:
+							with open(html_path, "r", encoding="utf-8") as f:
+								html_content = f.read()
+							ui.browseableMessage(html_content, _("Clipboard Content Editor Documentation"), isHtml=True)
+						except Exception as e:
+							ui.message(f"Failed to load document: {e}")
+					else:
+						ui.message(_("Document is not available."))
+		wx.CallAfter(_show)
 
 
 class FindReplaceDialog(wx.Dialog):
@@ -776,61 +1037,239 @@ class FindDialog(wx.Dialog):
 		self.Hide()
 
 
+class ClipboardHistoryDialog(wx.Dialog):
+	def __init__(self, parent, history, plugin_ref):
+		super().__init__(
+			parent,
+			title=_("Clipboard History"),
+			style=wx.DEFAULT_DIALOG_STYLE | wx.RESIZE_BORDER
+		)
+		self.history = history
+		self.plugin = plugin_ref
+		self.Bind(wx.EVT_CLOSE, self.onCloseDialog)
+		
+		mainSizer = wx.BoxSizer(wx.VERTICAL)
+		
+		label = wx.StaticText(self, label=_("Recent clipboard items:"))
+		mainSizer.Add(label, flag=wx.ALL, border=8)
+		
+		# Replace newlines with spaces for single-line display in listbox
+		display_choices = [(item[:80] + "..." if len(item)>80 else item).replace('\r\n', ' ').replace('\n', ' ') for item in history]
+		self.listBox = wx.ListBox(self, choices=display_choices)
+		mainSizer.Add(self.listBox, proportion=1, flag=wx.ALL | wx.EXPAND, border=8)
+		
+		btnSizer = wx.BoxSizer(wx.HORIZONTAL)
+		self.btnOptions = wx.Button(self, label=_("&Action"))
+		self.btnClose = wx.Button(self, wx.ID_CANCEL, label=_("Close"))
+		
+		self.btnClose.SetDefault()
+		
+		btnSizer.Add(self.btnOptions, flag=wx.RIGHT, border=5)
+		btnSizer.Add(self.btnClose)
+		
+		mainSizer.Add(btnSizer, flag=wx.ALL | wx.ALIGN_RIGHT, border=8)
+		self.SetSizer(mainSizer)
+		self.SetMinSize((500, 350))
+		
+		self.btnOptions.Bind(wx.EVT_BUTTON, self.onOptionsBtn)
+		self.btnClose.Bind(wx.EVT_BUTTON, self.onCloseDialog)
+		self.Bind(wx.EVT_CHAR_HOOK, self.onCharHook)
+		
+		self.listBox.SetFocus()
+		if self.history:
+			self.listBox.SetSelection(0)
+			
+	def onOptionsBtn(self, evt):
+		menu = wx.Menu()
+		idRestore = wx.NewIdRef()
+		idEdit = wx.NewIdRef()
+		idDelete = wx.NewIdRef()
+		idClear = wx.NewIdRef()
+		
+		menu.Append(idRestore, _("&Restore"))
+		menu.Append(idEdit, _("&Edit"))
+		menu.AppendSeparator()
+		menu.Append(idDelete, _("&Delete"))
+		menu.Append(idClear, _("&Clear All"))
+		
+		self.Bind(wx.EVT_MENU, self.onRestore, id=idRestore)
+		self.Bind(wx.EVT_MENU, self.onEdit, id=idEdit)
+		self.Bind(wx.EVT_MENU, self.onDelete, id=idDelete)
+		self.Bind(wx.EVT_MENU, self.onClear, id=idClear)
+		
+		self.btnOptions.PopupMenu(menu)
+		menu.Destroy()
+			
+	def onCharHook(self, evt):
+		if evt.GetKeyCode() == wx.WXK_ESCAPE:
+			self.onCloseDialog(evt)
+			return
+		if evt.GetKeyCode() in (wx.WXK_RETURN, wx.WXK_NUMPAD_ENTER):
+			self.onRestore(None)
+			return
+		evt.Skip()
+		
+	def onCloseDialog(self, evt):
+		self.plugin._historyDialog = None
+		self.Destroy()
+
+	def onRestore(self, evt):
+		idx = self.listBox.GetSelection()
+		if idx != wx.NOT_FOUND:
+			text = self.history[idx]
+			if _copyTextToClipboard(text):
+				self.plugin._lastClipboardText = text
+				ui.message(_("Clipboard updated"))
+				_playSound(880, 70)
+			self.onCloseDialog(evt)
+
+	def onEdit(self, evt):
+		idx = self.listBox.GetSelection()
+		if idx != wx.NOT_FOUND:
+			text = self.history[idx]
+			if _copyTextToClipboard(text):
+				self.plugin._lastClipboardText = text
+			self.onCloseDialog(evt)
+			wx.CallAfter(self.plugin._openEditor)
+
+	def onDelete(self, evt):
+		idx = self.listBox.GetSelection()
+		if idx != wx.NOT_FOUND:
+			if gui.messageBox(
+				_("Are you sure you want to delete this item?"),
+				_("Confirm Deletion"),
+				wx.YES_NO | wx.NO_DEFAULT | wx.ICON_QUESTION,
+				self
+			) == wx.YES:
+				del self.history[idx]
+				self.listBox.Delete(idx)
+				if self.history:
+					self.listBox.SetSelection(min(idx, len(self.history)-1))
+				else:
+					self.listBox.SetFocus()
+
+	def onClear(self, evt):
+		if not self.history:
+			return
+		if gui.messageBox(
+			_("Are you sure you want to clear the entire clipboard history?"),
+			_("Confirm Clear All"),
+			wx.YES_NO | wx.NO_DEFAULT | wx.ICON_QUESTION,
+			self
+		) == wx.YES:
+			self.history.clear()
+			self.listBox.Clear()
+
+
 class AddonSettingsPanel(SettingsPanel):
 	title = ADDON_SUMMARY
 
 	def makeSettings(self, settingsSizer):
 		sHelper = guiHelper.BoxSizerHelper(self, sizer=settingsSizer)
+		
+		self.languageChoices = ["default"]
+		self.languageLabels = [_("Default (NVDA Language)")]
+		
+		try:
+			import languageHandler
+			import os
+			locale_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "locale")
+			if os.path.isdir(locale_dir):
+				langs = [d for d in os.listdir(locale_dir) if os.path.isdir(os.path.join(locale_dir, d))]
+				langs.sort()
+				for lang in langs:
+					self.languageChoices.append(lang)
+					try:
+						desc = languageHandler.getLanguageDescription(lang)
+						self.languageLabels.append(f"{desc} ({lang})")
+					except Exception:
+						self.languageLabels.append(lang)
+		except Exception:
+			# Fallback
+			self.languageChoices = ["default", "en", "id", "ar", "uk"]
+			self.languageLabels = [_("Default (NVDA Language)"), "English", "Bahasa Indonesia", "العربية", "Українська"]
+		
+		langLabel = _("Addon Language (requires NVDA restart to fully apply)")
+		self.languageCombo = sHelper.addLabeledControl(
+			langLabel,
+			wx.Choice,
+			choices=self.languageLabels
+		)
+		
+		current_lang = config.conf["ClipboardContentEditor"].get("language", "default")
+		try:
+			idx = self.languageChoices.index(current_lang)
+			self.languageCombo.SetSelection(idx)
+		except ValueError:
+			self.languageCombo.SetSelection(0)
+			
 		self.soundCheckBox = sHelper.addItem(wx.CheckBox(self, label=_("Enable &sound")))
-		self.soundCheckBox.SetValue(config.conf["ClipboardContentEditor"]["soundEnabled"])
-		self.shortcutsWhenHiddenCheckBox = sHelper.addItem(
-			wx.CheckBox(
-				self,
-				label=_("Keep shortcuts active when buttons are hidden in editor"),
-			),
-		)
-		self.shortcutsWhenHiddenCheckBox.SetValue(
-			config.conf["ClipboardContentEditor"]["shortcutsWhenHiddenEnabled"],
-		)
-		self.summaryCheckBox = sHelper.addItem(
-			wx.CheckBox(self, label=_("Enable &information button in editor")),
-		)
-		self.summaryCheckBox.SetValue(
-			config.conf["ClipboardContentEditor"]["summaryButtonEnabled"],
-		)
-		self.findCheckBox = sHelper.addItem(
-			wx.CheckBox(self, label=_("Enable &find button in editor")),
-		)
-		self.findCheckBox.SetValue(config.conf["ClipboardContentEditor"]["findButtonEnabled"])
-		self.replaceCheckBox = sHelper.addItem(
-			wx.CheckBox(self, label=_("Enable &replace button in editor")),
-		)
-		self.replaceCheckBox.SetValue(
-			config.conf["ClipboardContentEditor"]["findReplaceButtonEnabled"],
-		)
+		try:
+			val = config.conf["ClipboardContentEditor"].get("soundEnabled", True)
+			self.soundCheckBox.SetValue(val if isinstance(val, bool) else str(val).lower() == "true")
+		except Exception:
+			self.soundCheckBox.SetValue(True)
+		
 		self.protectModeCheckBox = sHelper.addItem(
 			wx.CheckBox(self, label=_("Enable &protect mode (clipboard backup)")),
 		)
-		self.protectModeCheckBox.SetValue(config.conf["ClipboardContentEditor"]["protectModeEnabled"])
+		try:
+			val = config.conf["ClipboardContentEditor"].get("protectModeEnabled", True)
+			self.protectModeCheckBox.SetValue(val if isinstance(val, bool) else str(val).lower() == "true")
+		except Exception:
+			self.protectModeCheckBox.SetValue(True)
+		
+		try:
+			backup_val = int(config.conf["ClipboardContentEditor"].get("backupLevels", 1))
+		except Exception:
+			backup_val = 1
+			
 		backupLabel = _("Number of backup &levels")
 		self.backupLevelsSpin = sHelper.addLabeledControl(
 			backupLabel,
 			gui.nvdaControls.SelectOnFocusSpinCtrl,
 			min=1,
 			max=20,
-			initial=int(config.conf["ClipboardContentEditor"]["backupLevels"]),
+			initial=backup_val,
 		)
+		
+		# History Size Combobox
+		self.historyChoices = ["10", "25", "50", "100", "All"]
+		self.historyLabels = [_("10 Items"), _("25 Items"), _("50 Items"), _("100 Items"), _("Unlimited")]
+		
+		historyLabel = _("Clipboard History Limit")
+		self.historyCombo = sHelper.addLabeledControl(
+			historyLabel,
+			wx.Choice,
+			choices=self.historyLabels
+		)
+		
+		current_history = config.conf["ClipboardContentEditor"].get("historySize", "10")
+		try:
+			idx = self.historyChoices.index(str(current_history))
+			self.historyCombo.SetSelection(idx)
+		except ValueError:
+			self.historyCombo.SetSelection(0)
 
 	def onSave(self):
 		config.conf["ClipboardContentEditor"]["protectModeEnabled"] = self.protectModeCheckBox.GetValue()
-		config.conf["ClipboardContentEditor"]["summaryButtonEnabled"] = self.summaryCheckBox.GetValue()
-		config.conf["ClipboardContentEditor"][
-			"shortcutsWhenHiddenEnabled"
-		] = self.shortcutsWhenHiddenCheckBox.GetValue()
 		config.conf["ClipboardContentEditor"]["soundEnabled"] = self.soundCheckBox.GetValue()
-		config.conf["ClipboardContentEditor"]["findButtonEnabled"] = self.findCheckBox.GetValue()
-		config.conf["ClipboardContentEditor"][
-			"findReplaceButtonEnabled"
-		] = self.replaceCheckBox.GetValue()
 		config.conf["ClipboardContentEditor"]["backupLevels"] = int(self.backupLevelsSpin.GetValue())
+		
+		config.conf["ClipboardContentEditor"]["historySize"] = self.historyChoices[self.historyCombo.GetSelection()]
+		
+		selectedLanguage = self.languageChoices[self.languageCombo.GetSelection()]
+		oldLanguage = config.conf["ClipboardContentEditor"].get("language", "default")
+		if selectedLanguage != oldLanguage:
+			config.conf["ClipboardContentEditor"]["language"] = selectedLanguage
+			def prompt_restart():
+				if gui.messageBox(
+					_("Language changed. A restart of NVDA is required to fully apply the new language. Restart now?"),
+					_("Restart Required"),
+					wx.YES_NO | wx.ICON_QUESTION,
+					gui.mainFrame
+				) == wx.YES:
+					import core
+					core.restart()
+			wx.CallAfter(prompt_restart)
 

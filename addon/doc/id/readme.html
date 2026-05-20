@@ -4,81 +4,98 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="../style.css" media="screen">
-<title>Clipboard Content Editor 1.2.3</title>
+<title>Clipboard Content Editor 1.3.0</title>
 </head>
 <body>
 <h1>Clipboard Content Editor</h1>
 <p>Penulis: Fauzan January</p>
 <p><a href="../en/readme.html">Baca dalam Bahasa Inggris</a></p>
-<p>Add-on NVDA ini membantu Anda mengedit teks clipboard saat ini melalui dialog sederhana sebelum ditempelkan ke aplikasi lain. Add-on ini juga menyediakan aksi cepat untuk menampilkan informasi, mencari, dan mengganti teks.</p>
-<h2>Apa yang Baru?</h2>
+<p>Add-on NVDA ini memungkinkan Anda mengedit teks papan klip (clipboard) saat ini dalam dialog sederhana sebelum menempelkannya di tempat lain. Add-on ini juga berfungsi sebagai manajer papan klip yang canggih dengan riwayat tanpa batas, mode tambal (append mode), dan tindakan cepat untuk menampilkan informasi, membacakan teks, dan membersihkan format.</p>
+<h2>Fitur-fitur</h2>
 <ul>
-<li>Menambahkan dukungan bahasa Arab.</li>
-<li>Tidak ada pembaruan fitur lainnya.</li>
-<li>Menambahkan fitur <strong>Save As</strong> (Ctrl+Shift+S) ke editor, konten bisa disimpan sebagai .txt atau tipe file lainnya.</li>
-<li>Menambahkan opsi untuk mengaktifkan atau menonaktifkan suara add-on.</li>
-<li>Menambahkan umpan balik suara pada fitur Information, Restore Backup, dan Replace All agar konsisten.</li>
-<li>Memperbaiki link "Read in [Language]" di dokumentasi yang sebelumnya error (file not found) atau membuka source file mentah.</li>
-<li>Urutan tombol editor dirapikan: Information (Alt+I) -&gt; Find -&gt; Replace -&gt; Save -&gt; Save As -&gt; Cancel.</li>
+<li><strong>Clipboard Editor</strong>: Edit teks papan klip saat ini dalam editor multibaris yang dilengkapi dengan fitur Temukan/Ganti, Konversi Huruf (Change Case), dan Pembersih Teks.</li>
+<li><strong>Clipboard History</strong>: Secara otomatis menyimpan item yang Anda salin ke dalam daftar riwayat tanpa batas dengan kemampuan CRUD (Baca, Edit, Hapus).</li>
+<li><strong>Append Mode (Mode Tambal)</strong>: Kumpulkan banyak cuplikan teks dengan lancar dengan menggabungkan salinan baru ke papan klip yang sudah ada.</li>
+<li><strong>Informasi &amp; Suara</strong>: Tampilkan informasi detail (karakter, kata, baris) dan bacakan seluruh teks papan klip tanpa batasan karakter.</li>
+<li><strong>Simpan ke File</strong>: Simpan konten papan klip Anda langsung menjadi file <code>.txt</code>.</li>
+<li><strong>Command Layer</strong>: Sistem pintasan global yang terpadu untuk mencegah bentrokan tombol dengan aplikasi atau add-on lain.</li>
 </ul>
-<h2>Fitur</h2>
-<ul>
-<li>Mengedit teks clipboard pada editor multiline.</li>
-<li>Dialog Find untuk mencari teks.</li>
-<li>Mengganti teks di dalam editor.</li>
-<li>Menampilkan informasi (jumlah karakter, kata, dan baris) dari teks clipboard.</li>
-<li>Menyimpan konten clipboard ke file.</li>
-<li>Cadangan clipboard (protect mode) dan pemulihan.</li>
-<li>Pengaturan suara yang dapat disesuaikan.</li>
-<li>Shortcut global untuk Information.</li>
-</ul>
-<h2>Cara pakai</h2>
+<h2>Cara Menggunakan</h2>
 <ol>
-<li>Tekan <code>NVDA+E</code> untuk membuka editor.</li>
-<li>Edit teks sesuai kebutuhan.</li>
-<li>Gunakan tombol atau shortcut untuk Information, Find, Replace, Save (Ctrl+S), atau Cancel (Esc).</li>
-<li>Tekan Save (Ctrl+S) untuk menyimpan hasil ke clipboard.</li>
+<li>Tekan <code>Ctrl+Alt+C</code> untuk mengaktifkan command layer dari add-on.</li>
+<li>Tekan <code>E</code> untuk membuka editor.</li>
+<li>Edit teks, gunakan menu <code>Tools</code> untuk mengubah ukuran huruf atau membersihkan teks, atau gunakan fitur Temukan/Ganti.</li>
+<li>Tekan Simpan (Ctrl+S) untuk memperbarui papan klip dengan konten yang telah diedit.</li>
 </ol>
-<h2>Shortcut</h2>
-<p>Shortcut global (bisa dipakai di mana saja):</p>
+<h2>Daftar Perintah</h2>
 <ul>
-<li><code>NVDA+E</code> - Buka editor clipboard.</li>
-<li><code>NVDA+I</code> - Informasi isi clipboard.</li>
-<li><code>NVDA+Z</code> - Pulihkan clipboard dari cadangan (protect mode).</li>
+<li><code>Ctrl+Alt+C</code>: Aktifkan mode perintah Clipboard Content Editor</li>
+<li><code>F1</code>: Buka Daftar Perintah atau Dokumentasi Lengkap (saat dalam mode perintah)</li>
+<li><code>A</code>: Aktifkan / Nonaktifkan Mode Tambal (saat dalam mode perintah)</li>
+<li><code>E</code>: Buka Editor Papan Klip (saat dalam mode perintah)</li>
+<li><code>R</code>: Pulihkan Cadangan Editor (saat dalam mode perintah)</li>
+<li><code>I</code>: Ucapkan Informasi Papan Klip (saat dalam mode perintah)</li>
+<li><code>S</code>: Bacakan Konten Papan Klip (saat dalam mode perintah)</li>
+<li><code>H</code>: Buka Manajer Riwayat Papan Klip (saat dalam mode perintah)</li>
 </ul>
-<p>Shortcut di dialog editor:
-- <code>Alt+I</code> - Information untuk teks editor.
-- <code>Alt+F</code> - Cari teks (Find).
-- <code>Alt+R</code> - Ganti teks (Replace).
-- <code>Ctrl+S</code> - Save perubahan (tombol Save).
-- <code>Ctrl+Shift+S</code> - Simpan konten sebagai file (tombol Save As).
-- <code>Esc</code> - Cancel (tombol Cancel).</p>
-<p>Jika clipboard kosong, Information akan mengumumkan "clipboard is empty".</p>
+<h2>Persyaratan Sistem</h2>
+<ul>
+<li>NVDA 2025.3 atau lebih baru (termasuk dukungan penuh untuk NVDA 2026.1 dan Python 64-bit).</li>
+<li>Windows 10 atau lebih baru.</li>
+</ul>
+<h3>Pintasan Editor</h3>
+<p>(Ini hanya berfungsi saat Dialog Editor terbuka)</p>
+<ul>
+<li><code>Alt+S</code> - Menu Suara (ucapkan konten).</li>
+<li><code>Alt+I</code> - Informasi Papan Klip (di dalam menu Tools).</li>
+<li><code>Alt+F</code> - Temukan teks.</li>
+<li><code>Alt+R</code> - Ganti teks.</li>
+<li><code>Alt+U</code> - Ubah ke huruf besar.</li>
+<li><code>Alt+L</code> - Ubah ke huruf kecil.</li>
+<li><code>Alt+T</code> - Ubah ke huruf kapital pada setiap kata (Title case).</li>
+<li><code>Alt+W</code> - Hapus spasi di awal dan akhir teks (Trim whitespace).</li>
+<li><code>Alt+E</code> - Hapus baris kosong.</li>
+<li><code>Alt+H</code> - Hapus tag HTML/Format.</li>
+<li><code>Ctrl+S</code> - Simpan (Tombol Simpan).</li>
+<li><code>Ctrl+Shift+S</code> - Simpan Sebagai (Tombol Simpan Sebagai...).</li>
+<li><code>Esc</code> - Batal (Tombol Batal).</li>
+</ul>
+<h3>Pintasan Manajer Riwayat</h3>
+<p>(Ini hanya berfungsi saat Dialog Riwayat terbuka)</p>
+<ul>
+<li><code>Enter</code> - Pulihkan item yang dipilih ke papan klip.</li>
+<li><code>Alt+E</code> - Buka item yang dipilih di Editor.</li>
+<li><code>Alt+D</code> - Hapus item yang dipilih dari riwayat.</li>
+<li><code>Alt+C</code> - Bersihkan seluruh riwayat.</li>
+</ul>
 <h2>Pengaturan</h2>
-<p>Buka NVDA Settings dan pilih kategori add-on:</p>
+<p>Buka Pengaturan NVDA dan pilih kategori Clipboard Content Editor:</p>
 <ul>
-<li>Enable sound (default: enabled).</li>
-<li>Keep shortcuts active when buttons are hidden in editor (default: enabled).</li>
-<li>Enable Information button in editor.</li>
-<li>Enable Find button in editor.</li>
-<li>Enable Replace button in editor.</li>
-<li>Enable protect mode (clipboard backup).</li>
-<li>Number of backup levels.</li>
+<li>Bahasa Addon (memungkinkan Anda menggunakan bahasa yang berbeda untuk addon dari bahasa NVDA; memerlukan mulai ulang NVDA).</li>
+<li>Aktifkan suara (Bawaan: diaktifkan).</li>
+<li>Aktifkan mode perlindungan (cadangan papan klip editor).</li>
+<li>Jumlah tingkat cadangan.</li>
+<li>Batas riwayat papan klip (pilihan: 10, 25, 50, 100, Semua; bawaan: 10).</li>
 </ul>
-<h2>Protect mode (cadangan clipboard)</h2>
-<p>Saat protect mode aktif, add-on menyimpan riwayat isi clipboard sebelum disimpan. Anda bisa memulihkan isi clipboard sebelumnya dengan <code>NVDA+Z</code>. Jumlah cadangan yang disimpan diatur oleh "Number of backup levels".</p>
 <h2>Catatan</h2>
 <ul>
-<li>Find dan Replace mendukung match case dan hanya bekerja di teks editor.</li>
-<li>Di dialog Find, ketik teks lalu tekan Esc untuk langsung menuju kecocokan berikutnya.</li>
+<li><strong>Mode Tambal (Append Mode)</strong>: Saat diaktifkan, setiap kali Anda menekan <code>Ctrl+C</code>, teks baru akan ditambahkan ke bagian bawah teks papan klip Anda saat ini, alih-alih menggantinya. Ingatlah untuk mematikannya setelah Anda selesai mengumpulkan teks!</li>
+<li><strong>Manajer Riwayat</strong>: Riwayat melacak semua teks yang Anda salin di seluruh sistem secara otomatis.</li>
 </ul>
 <h2>Lisensi</h2>
-<p>Add-on ini dirilis dengan lisensi GNU General Public License versi 2 (GPL v2).</p>
+<p>Add-on ini dirilis di bawah GNU General Public License versi 2 (GPL v2).</p>
+<h2>Dukungan dan Kontribusi Pengembangan</h2>
+<p>Jika Anda ingin ikut berkontribusi atau mendukung pengembangan addon ini, Anda dapat melakukannya dengan cara memberi masukan, melaporkan bug, atau pengajuan fitur baru dengan cara menghubungi kontak yang tersedia, membuka issue atau permintaan pull di GitHub, serta berdonasi untuk keberlanjutan pengembangan.</p>
+<ul>
+<li><strong>PayPal:</strong> <a href="mailto:donate@fauzanaja.com">donate@fauzanaja.com</a></li>
+<li><strong>PayPal.me:</strong> <a href="https://paypal.me/fauzanjanuary">paypal.me/fauzanjanuary</a></li>
+</ul>
 <h2>Kontak</h2>
 <ul>
-<li>Surel: <a href="mailto:surel@fauzanaja.com">surel@fauzanaja.com</a></li>
+<li>Email: <a href="mailto:surel@fauzanaja.com">surel@fauzanaja.com</a></li>
 <li>Telegram: <a href="https://t.me/fauzan_january/">fauzan_january</a></li>
-<li>Situs web: <a href="https://fauzanaja.com/">fauzanaja.com</a></li>
+<li>Saluran WhatsApp: <a href="https://whatsapp.com/channel/0029VaFLXIO545upgh6w5h3K">fauzan_january</a></li>
+<li>Situs Web: <a href="https://fauzanaja.com/">fauzanaja.com</a></li>
 </ul>
 </body>
 </html>
