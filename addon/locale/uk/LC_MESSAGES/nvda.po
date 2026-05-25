@@ -2,319 +2,613 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2026-02-04 10:45+0200\n"
-"PO-Revision-Date: 2026-02-04 11:19+0200\n"
+"POT-Creation-Date: 2026-05-23 18:56+0300\n"
+"PO-Revision-Date: 2026-05-23 19:20+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-Basepath: .\n"
 
-#: addon\installTasks.py:53 addon\installTasks.py:58 addon\installTasks.py:60
+#: addon\installTasks.py:70 addon\installTasks.py:75 addon\installTasks.py:77
 msgid "What's new information is unavailable."
 msgstr "Що нового інформація недоступна."
 
-#: addon\installTasks.py:66
+#: addon\installTasks.py:83
 msgid "Clipboard Content Editor - What's New"
 msgstr "Редактор вмісту буфера обміну - Що нового"
 
-#: addon\installTasks.py:79
+#: addon\installTasks.py:96
 msgid "&OK"
 msgstr "&OK"
 
-#: addon\installTasks.py:97
-msgid "Clipboard Content Editor - Installation"
-msgstr "Редактор вмісту буфера обміну - встановлення"
-
-#: addon\installTasks.py:101
-msgid "Do you want to continue installation or see what's new first?"
-msgstr "Бажаєте продовжити встановлення чи спочатку подивитися, що нового?"
-
 #: addon\installTasks.py:108
-msgid "&See what's new"
-msgstr "&Дізнатись, що нового"
+msgid "Support Clipboard Content Editor Development"
+msgstr "Підтримка розробки редактора вмісту буфера обміну"
 
-#: addon\installTasks.py:110
-msgid "&Continue Installation"
-msgstr "&Продовжити встановлення"
-
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:38
-#, python-brace-format
-msgid "Clipboard information: {chars} characters, {words} words, {lines} lines"
+#: addon\installTasks.py:114
+msgid ""
+"If you find this addon useful in your work or activities, please consider "
+"supporting its ongoing development. Your support, no matter how small, is "
+"very meaningful in helping develop new features, fix bugs, and maintain the "
+"addon for the future.\n"
+"\n"
 msgstr ""
-"Інформація з буфера обміну: {chars} символів, {words} слів, {lines} рядків"
+"Якщо ви вважаєте цей додаток корисним у своїй роботі чи діяльності, "
+"подумайте про підтримку його постійного розвитку. Ваша підтримка, якою б "
+"незначною вона не була, дуже важлива, оскільки допомагає розробляти нові "
+"функції, виправляти помилки та підтримувати додаток на майбутнє.\n"
+"\n"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:51
+#: addon\installTasks.py:129
+msgid "Copy PayPal Email"
+msgstr "Копіювати електронну адресу PayPal"
+
+#: addon\installTasks.py:133
+msgid "Open PayPal Link"
+msgstr "Відкрити посилання PayPal"
+
+#: addon\installTasks.py:137
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1063
+msgid "Close"
+msgstr "Закрити"
+
+#: addon\installTasks.py:150
+msgid "Donation email copied successfully."
+msgstr "Електронну пошту для пожертви успішно скопійовано."
+
+#: addon\installTasks.py:153
+msgid "Failed to copy donation email."
+msgstr "Не вдалося скопіювати електронну адресу для пожертвувань."
+
+#: addon\installTasks.py:161
+msgid "Clipboard Content Editor Installation"
+msgstr "Встановлення Clipboard Content Editor"
+
+#. Message
+#: addon\installTasks.py:166
+msgid ""
+"Welcome to Clipboard Content Editor! Before continuing the installation, "
+"what would you like to do?"
+msgstr ""
+"Ласкаво просимо до Clipboard Content Editor! Перш ніж продовжити "
+"встановлення, що б ви хотіли зробити?"
+
+#. 1. See What's New
+#: addon\installTasks.py:175
+msgid "&1. See What's New"
+msgstr "&1. Дізнатись, що нового"
+
+#. 2. Support Development
+#: addon\installTasks.py:180
+msgid "&2. Support Development (Donate)"
+msgstr "&2. Підтримати розробку (Пожертвувати)"
+
+#. 3. Continue Installation
+#: addon\installTasks.py:185
+msgid "&3. Continue Installation"
+msgstr "&3. Продовжити встановлення"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:29
+msgid "&Copy to Clipboard"
+msgstr "&Копіювати до буфера обміну"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:33
+msgid "&Open in Browser"
+msgstr "&Відкрити у браузері"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:36
+msgid "&Close"
+msgstr "&Закрити"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:47
+msgid "Text successfully copied."
+msgstr "Текст успішно скопійовано."
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:49
+msgid "Failed to copy text."
+msgstr "Не вдалося скопіювати текст."
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:94
+#, python-brace-format
+msgid ""
+"Clipboard information: {chars} characters, {words} words, {lines} lines, "
+"{paras} paragraphs"
+msgstr ""
+"Інформація про буфер обміну: {chars} символів, {words} слів, {lines} рядків, "
+"{paras} абзаців"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:108
 msgid "Clipboard is empty"
 msgstr "Буфер обміну порожній"
 
 #. Translators: Summary/title for this add-on
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:188
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:415
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:426 buildVars.py:11
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:241
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:507
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:518 buildVars.py:11
 msgid "Clipboard Content Editor"
 msgstr "Редактор вмісту буфера обміну"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:205
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:254
 msgid "Clipboard content:"
 msgstr "Вміст буфера обміну:"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:225
-msgid "&Information"
-msgstr "&Інформація"
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:269
+msgid "&Tools"
+msgstr "&Інструменти"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:229
-msgid "&Find"
-msgstr "&Знайти"
-
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:232
-msgid "&Replace"
-msgstr "&Замінити"
-
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:234
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:272
 msgid "Save (Ctrl+S)"
 msgstr "Зберегти (Ctrl+S)"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:236
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:274
 msgid "Save As... (Ctrl+Shift+S)"
 msgstr "Зберегти як... (Ctrl+Shift+S)"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:237
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:275
 msgid "Cancel (Esc)"
 msgstr "Скасувати (Esc)"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:290
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:308
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1122
 msgid "Clipboard updated"
 msgstr "Буфер обміну оновлено"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:293
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:296
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:311
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:314
 msgid "Failed to update clipboard"
 msgstr "Не вдалося оновити буфер обміну"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:305
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:323
 msgid "Save as"
 msgstr "Зберегти як"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:306
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:324
 msgid "Text files (*.txt)|*.txt|All files (*.*)|*.*"
 msgstr "Текстові файли (*.txt)|*.txt|Всі файли (*.*)|*.*"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:315
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:333
 msgid "File saved"
 msgstr "Файл збережено"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:319
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:337
 #, python-brace-format
 msgid "Error saving file: {error}"
 msgstr "Помилка збереження файлу: {error}"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:331
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:344
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:354
+msgid "&Speech"
+msgstr "&Мовлення"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:355
+msgid "&Information"
+msgstr "&Інформація"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:356
+msgid "&Find"
+msgstr "&Знайти"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:357
+msgid "&Replace"
+msgstr "&Замінити"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:359
+msgid "Convert to &uppercase"
+msgstr "Перетворити на &великий регістр"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:360
+msgid "Convert to &lowercase"
+msgstr "Перетворити на &малий регістр"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:361
+msgid "Convert to &title case"
+msgstr "Перетворити на регістр заголовка"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:363
+msgid "Trim &whitespace"
+msgstr "Видалити &пробіли"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:364
+msgid "Remove &empty lines"
+msgstr "Видалити &порожні рядки"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:365
+msgid "Strip &HTML/Formatting"
+msgstr "Видалети &HTML форматування"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:423
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:436
 msgid "Changes canceled"
 msgstr "Зміни скасовано"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:425
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:517
 msgid "You have unsaved changes. Discard them?"
 msgstr "У вас є незбережені зміни. Відхилити їх?"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:492
-msgid "Opens a clipboard editor to modify the current clipboard text."
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:592
+msgid "Appended"
+msgstr "Додано"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:672
+msgid "Exited Clipboard Content Editor command layer"
+msgstr "Ви вийшли з командного шару редактора вмісту буфера обміну"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:676
+msgid "Activates Clipboard Content Editor command layer"
+msgstr "Активує командний шар редактора вмісту буфера обміну"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:681
+msgid "Enter Clipboard Content Editor command layer. Press F1 for help."
 msgstr ""
-"Відкриває редактор буфера обміну для зміни поточного тексту буфера обміну."
+"Увійти у командний шар редактора вмісту буфера обміну. Натисніть F1 для "
+"довідки."
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:513
-msgid "Shows information about the current clipboard text."
-msgstr "Показує інформацію про поточний текст буфера обміну."
-
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:523
-msgid "Restores the previous clipboard content from backup."
-msgstr "Відновлює попередній вміст буфера обміну з резервної копії."
-
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:528
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:712
 msgid "Protect mode is disabled"
 msgstr "Режим захисту вимкнено"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:532
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:716
 msgid "No backup available"
 msgstr "Немає резервної копії"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:537
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:722
 msgid "Previous clipboard restored"
 msgstr "Попередній буфер обміну відновлено"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:540
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:725
 msgid "Failed to restore clipboard"
 msgstr "Не вдалося відновити буфер обміну"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:547
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:564
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:737
+msgid "Append mode on"
+msgstr "Режим додавання ввімкнено"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:739
+msgid "Append mode off"
+msgstr "Режим додавання вимкнено"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:757
+msgid "Command List"
+msgstr "Список команд"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:757
+msgid "Full Documentation"
+msgstr "Повна документація"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:758
+msgid " "
+msgstr " "
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:758
+msgid "What do you want to show?"
+msgstr "Що ви хочете показати?"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:768
+msgid ""
+"Clipboard Content Editor Command List\n"
+"--------------------\n"
+"F1: Open Command List or Full Documentation\n"
+"A: On / Off Append Mode\n"
+"E: Open Clipboard Editor\n"
+"R: Restore Editor Backup\n"
+"I: Say Clipboard Information\n"
+"S: Speak Clipboard Content\n"
+"H: Open Clipboard History Manager"
+msgstr ""
+"Список команд редактора вмісту буфера обміну\n"
+"--------------------\n"
+"F1: Відкрити список команд або повну документацію\n"
+"A: Увімкнути/вимкнути режим додавання\n"
+"E: Відкрити редактор буфера обміну\n"
+"R: Відновити резервну копію редактора\n"
+"I: Прочитати інформацію про буфер обміну\n"
+"S: Прочитати вміст буфера обміну\n"
+"H: Відкрити менеджер історії буфера обміну"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:772
+msgid "Clipboard Content Editor Command List"
+msgstr "Список команд редактора вмісту буфера обміну"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:796
+msgid "Clipboard Content Editor Documentation"
+msgstr "Документація редактора вмісту буфера обміну"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:800
+msgid "Document is not available."
+msgstr "Документ недоступний."
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:808
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:825
 msgid "Replace"
 msgstr "Замінити"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:554
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:815
 msgid "Source text"
 msgstr "Вихідний текст"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:555
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:816
 msgid "Replacement text"
 msgstr "Текст для заміни"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:556
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:718
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:817
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:979
 msgid "Case sensitive"
 msgstr "З урахуванням регістру"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:558
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:819
 msgid "Replace whole words only, not part of other words"
 msgstr "Замінювати лише цілі слова, а не частину інших слів"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:563
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:725
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:824
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:986
 msgid "Find next"
 msgstr "Знайти далі"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:565
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:826
 msgid "Replace all"
 msgstr "Замінити все"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:599
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:620
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:674
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:755
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:860
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:881
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:935
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1016
 msgid "Find text is empty"
 msgstr "Текст для пошуку порожній"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:610
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:689
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:766
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:871
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:950
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1027
 msgid "Text not found"
 msgstr "Текст не знайдено"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:693
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:954
 #, python-brace-format
 msgid "{count} replacements"
 msgstr "{count} замін"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:710
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:971
 msgid "Find"
 msgstr "Знайти"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:717
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:978
 msgid "Find what"
 msgstr "Що шукаємо"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:720
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:981
 msgid "Find whole words only, not part of other words"
 msgstr "Знайти тільки цілі слова, а не частини інших слів"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:784
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1044
+msgid "Clipboard History"
+msgstr "Історія буфера обміну"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1053
+msgid "Recent clipboard items:"
+msgstr "Останні елементи буфера обміну:"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1062
+msgid "&Action"
+msgstr "&Дія"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1089
+msgid "&Restore"
+msgstr "&Відновити"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1090
+msgid "&Edit"
+msgstr "&Редагувати"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1092
+msgid "&Delete"
+msgstr "&Видалити"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1093
+msgid "&Clear All"
+msgstr "&Очистити все"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1139
+msgid "Are you sure you want to delete this item?"
+msgstr "Ви впевнені, що хочете видалити цей елемент?"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1140
+msgid "Confirm Deletion"
+msgstr "Підтвердити видалення"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1155
+msgid "Are you sure you want to clear the entire clipboard history?"
+msgstr "Ви впевнені, що бажаєте очистити всю історію буфера обміну?"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1156
+msgid "Confirm Clear All"
+msgstr "Підтвердити Очистити все"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1171
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1190
+msgid "Default (NVDA Language)"
+msgstr "Початково (мова NVDA)"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1192
+msgid "Addon Language (requires NVDA restart to fully apply)"
+msgstr "Мова додатка (для повного застосування потрібен перезапуск NVDA)"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1206
 msgid "Enable &sound"
 msgstr "Увімкнути &звук"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:789
-msgid "Keep shortcuts active when buttons are hidden in editor"
-msgstr "Зберігати активність гарячих клавіш, коли кнопки приховані в редакторі"
-
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:796
-msgid "Enable &information button in editor"
-msgstr "Увімкнути &інформаційну кнопку в редакторі"
-
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:802
-msgid "Enable &find button in editor"
-msgstr "Увімкнути кнопку &знайти в редакторі"
-
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:806
-msgid "Enable &replace button in editor"
-msgstr "Увімкнути кнопку &замінити в редакторі"
-
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:812
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1214
 msgid "Enable &protect mode (clipboard backup)"
 msgstr "Увімкнути &режим захисту (резервне копіювання буфера обміну)"
 
-#: addon\globalPlugins\ClipboardContentEditor\__init__.py:815
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1227
 msgid "Number of backup &levels"
 msgstr "Кількість &рівнів резервного копіювання"
 
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1238
+msgid "10 Items"
+msgstr "10 Елементів"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1238
+msgid "25 Items"
+msgstr "25 Елементів"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1238
+msgid "50 Items"
+msgstr "50 Елементів"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1238
+msgid "100 Items"
+msgstr "100 Елементів"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1238
+msgid "Unlimited"
+msgstr "Без обмежень"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1240
+msgid "Clipboard History Limit"
+msgstr "Ліміт історії буфера обміну"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1267
+msgid ""
+"Language changed. A restart of NVDA is required to fully apply the new "
+"language. Restart now?"
+msgstr ""
+"Мову змінено. Щоб повністю застосувати нову мову, потрібно перезапустити "
+"NVDA. Перезапустити зараз?"
+
+#: addon\globalPlugins\ClipboardContentEditor\__init__.py:1268
+msgid "Restart Required"
+msgstr "Потрібен перезапуск"
+
 #: buildVars.py:14
 msgid ""
-"Edits the current clipboard text in a simple editor so pasted content "
-"reflects the changes. Shortcuts: NVDA+E opens the editor, NVDA+Z restores "
-"the previous clipboard, and NVDA+I shows clipboard info."
+"A powerful clipboard editor and manager for NVDA users. Review, analyze, "
+"edit, and manage clipboard content before pasting. Use Ctrl+Alt+C to "
+"activate the command layer and press F1 to show the list of available "
+"commands."
 msgstr ""
-"Редагує поточний текст у буфері обміну в простому редакторі, щоб вставлений "
-"вміст відображав зміни. Гарячі клавіші: NVDA+E відкриває редактор, NVDA+Z "
-"відновлює попередній буфер обміну, NVDA+I показує інформацію про буфер "
-"обміну."
+"Потужний редактор і менеджер буфера обміну для користувачів NVDA. "
+"Переглядайте, аналізуйте, редагуйте та керуйте вмістом буфера обміну перед "
+"вставленням. Використовуйте Ctrl+Alt+C, щоб активувати командний шар, і "
+"натисніть F1, щоб показати список доступних команд."
 
-#: buildVars.py:20
-msgid ""
-"- Added **Save As** feature (Ctrl+Shift+S) to the editor, allowing content "
-"to be saved as .txt or other file types.\n"
-"- Added a setting to enable or disable addon sounds.\n"
-"- Added comprehensive sound feedback to Information, Restore Backup, and "
-"Replace All features for consistent audio cues.\n"
-"- Fixed the \"Read in [Language]\" links in the documentation to correctly "
-"open the HTML files instead of showing file not found errors or opening raw "
-"source files.\n"
-"- The editor buttons are now strictly ordered for better navigation: "
-"Information -> Find -> Replace -> Save -> Save As -> Cancel."
-msgstr ""
-"- Додано функцію **Зберегти як** (Ctrl+Shift+S) до редактора, що дозволяє "
-"зберігати вміст у форматі .txt або інших типах файлів.\n"
-"- Додано налаштування для ввімкнення або вимкнення звуків додатка.\n"
-"- Додано комплексний звуковий супровід до функцій «Інформація», «Відновити "
-"резервну копію» та «Замінити все» для забезпечення послідовних звукових "
-"сигналів.\n"
-"- Виправлено посилання «Читати [Мову]» в документації, щоб правильно "
-"відкривати HTML-файли замість відображення помилок про відсутність файлу або "
-"відкриття необроблених вихідних файлів.\n"
-"- Кнопки редактора тепер розташовані в строгому порядку для кращої "
-"навігації: Інформація -> Знайти -> Замінити -> Зберегти -> Зберегти як -> "
-"Скасувати."
-
-msgid "Clipboard Content Editor Installation"
-msgstr "Встановлення Clipboard Content Editor"
-
-msgid "Welcome to Clipboard Content Editor! Before continuing the installation, what would you like to do?"
-msgstr "Ласкаво просимо до Clipboard Content Editor! Перш ніж продовжити встановлення, що б ви хотіли зробити?"
-
-msgid "&1. See What's New"
-msgstr "&1. Дізнатись, що нового"
-
-msgid "&2. Support Development (Donate)"
-msgstr "&2. Підтримати розробку (Пожертвувати)"
-
-msgid "&3. Continue Installation"
-msgstr "&3. Продовжити встановлення"
-
-msgid "Clipboard information: {chars} characters, {words} words, {lines} lines, {paras} paragraphs"
-msgstr "Інформація про буфер обміну: {chars} символів, {words} слів, {lines} рядків, {paras} абзаців"
-
-
+#: buildVars.py:19
 msgid ""
 "- Added full compatibility for NVDA 2026.1 (Python 64-bit).\n"
-"- Refactored all global shortcuts into a unified Command Layer (Ctrl+Alt+C) to prevent conflicts. Press F1 after the command layer trigger to view all available commands.\n"
-"- Introduced an unlimited Clipboard History manager with complete CRUD capabilities (H in the command layer).\n"
-"- Added Append Mode (A in the command layer) to seamlessly collect multiple texts by concatenating new copies.\n"
-"- Restructured the Editor dialog by moving tools into a dedicated Tools menu.\n"
-"- Restored the ability to speak clipboard content without character limit (S in the command layer).\n"
-"- Added settings to configure the maximum Clipboard History size and override the addon's display language independently of NVDA.\n"
-"- Fixed a bug where the Editor dialog would freeze or hang after successfully saving a file via 'Save As...'.\n"
-"- Integrated a Development Support (PayPal donation) dialog into the installation flow.\n"
-"- Added paragraph counting to the Information feature (characters, words, lines, and paragraphs)."
+"- Refactored all global shortcuts into a unified Command Layer (Ctrl+Alt+C) "
+"to prevent conflicts. Press F1 after the command layer trigger to view all "
+"available commands.\n"
+"- Introduced an unlimited Clipboard History manager with complete CRUD "
+"capabilities (H in the command layer).\n"
+"- Added Append Mode (A in the command layer) to seamlessly collect multiple "
+"texts by concatenating new copies.\n"
+"- Restructured the Editor dialog by moving tools into a dedicated Tools "
+"menu.\n"
+"- Restored the ability to speak clipboard content without character limit (S "
+"in the command layer).\n"
+"- Added settings to configure the maximum Clipboard History size and "
+"override the addon's display language independently of NVDA.\n"
+"- Fixed a bug where the Editor dialog would freeze or hang after "
+"successfully saving a file via 'Save As...'.\n"
+"- Integrated a Development Support (PayPal donation) dialog into the "
+"installation flow.- Added paragraph counting to the Information feature "
+"(characters, words, lines, and paragraphs)."
 msgstr ""
-"- Додано повну сумісність з NVDA 2026.1 (Python 64-bit).\n"
-"- Рефакторинг усіх глобальних гарячих клавіш у єдиний Командний рівень (Ctrl+Alt+C) для запобігання конфліктам. Натисніть F1 після виклику командного рівня, щоб переглянути всі доступні команди.\n"
-"- Представлено необмежений менеджер історії буфера обміну з повними можливостями CRUD (H у командному рівні).\n"
-"- Додано режим додавання (A у командному рівні) для зручного збору кількох текстів шляхом об’єднання нових копій.\n"
-"- Реструктуризовано діалог редактора шляхом переміщення інструментів у спеціальне меню інструментів.\n"
-"- Відновлено можливість промовляти вміст буфера обміну без обмеження символів (S у командному рівні).\n"
-"- Додано налаштування для конфігурації максимального розміру історії буфера обміну та зміни мови відображення доповнення незалежно від NVDA.\n"
-"- Виправлено помилку, через яку діалог редактора зависав або зупинявся після успішного збереження файлу через «Зберегти як...».\n"
-"- Інтегровано діалог підтримки розробки (пожертвування PayPal) у процес встановлення.\n"
-"- Додано підрахунок абзаців до функції «Інформація» (символи, слова, рядки та абзаци)."
+"- Додано повну сумісність із NVDA 2026.1 (Python, 64-бітна версія).\n"
+"- Усі глобальні комбінації клавіш перенесено до єдиного командного шару "
+"(Ctrl+Alt+C) для уникнення конфліктів. Натисніть F1 після активації "
+"командного шару, щоб переглянути всі доступні команди.\n"
+"- Впроваджено менеджер історії буфера обміну з необмеженим обсягом та повним "
+"набором функцій CRUD (клавіша H у командному шарі).\n"
+"- Додано режим додавання (A у командному шарі) для безперервного збору "
+"декількох текстів шляхом об'єднання нових копій.\n"
+"- Перебудовано діалог редактора шляхом переміщення інструментів у спеціальне "
+"меню «Інструменти».\n"
+"- Відновлено можливість озвучування вмісту буфера обміну без обмеження "
+"кількості символів (S у командному шарі).\n"
+"- Додано налаштування для конфігурації максимального розміру історії буфера "
+"обміну та заміни мови показу додатка незалежно від NVDA.\n"
+"- Виправлено помилку, через яку діалог «Редактор» зависало або блокувалося "
+"після успішного збереження файлу за допомогою «Зберегти як...».\n"
+"- Інтегровано діалог підтримки розробки (пожертва через PayPal) у процес "
+"інсталяції.\n"
+"- Додано підрахунок абзаців до функції «Інформація» (символи, слова, рядки "
+"та абзаци)."
 
+#~ msgid "Clipboard Content Editor - Installation"
+#~ msgstr "Редактор вмісту буфера обміну - встановлення"
+
+#~ msgid "Do you want to continue installation or see what's new first?"
+#~ msgstr "Бажаєте продовжити встановлення чи спочатку подивитися, що нового?"
+
+#~ msgid "&See what's new"
+#~ msgstr "&Дізнатись, що нового"
+
+#~ msgid "&Continue Installation"
+#~ msgstr "&Продовжити встановлення"
+
+#, python-brace-format
+#~ msgid ""
+#~ "Clipboard information: {chars} characters, {words} words, {lines} lines"
+#~ msgstr ""
+#~ "Інформація з буфера обміну: {chars} символів, {words} слів, {lines} рядків"
+
+#~ msgid "Opens a clipboard editor to modify the current clipboard text."
+#~ msgstr ""
+#~ "Відкриває редактор буфера обміну для зміни поточного тексту буфера обміну."
+
+#~ msgid "Shows information about the current clipboard text."
+#~ msgstr "Показує інформацію про поточний текст буфера обміну."
+
+#~ msgid "Restores the previous clipboard content from backup."
+#~ msgstr "Відновлює попередній вміст буфера обміну з резервної копії."
+
+#~ msgid "Keep shortcuts active when buttons are hidden in editor"
+#~ msgstr ""
+#~ "Зберігати активність гарячих клавіш, коли кнопки приховані в редакторі"
+
+#~ msgid "Enable &information button in editor"
+#~ msgstr "Увімкнути &інформаційну кнопку в редакторі"
+
+#~ msgid "Enable &find button in editor"
+#~ msgstr "Увімкнути кнопку &знайти в редакторі"
+
+#~ msgid "Enable &replace button in editor"
+#~ msgstr "Увімкнути кнопку &замінити в редакторі"
+
+#~ msgid ""
+#~ "Edits the current clipboard text in a simple editor so pasted content "
+#~ "reflects the changes. Shortcuts: NVDA+E opens the editor, NVDA+Z restores "
+#~ "the previous clipboard, and NVDA+I shows clipboard info."
+#~ msgstr ""
+#~ "Редагує поточний текст у буфері обміну в простому редакторі, щоб "
+#~ "вставлений вміст відображав зміни. Гарячі клавіші: NVDA+E відкриває "
+#~ "редактор, NVDA+Z відновлює попередній буфер обміну, NVDA+I показує "
+#~ "інформацію про буфер обміну."
+
+#~ msgid ""
+#~ "- Added **Save As** feature (Ctrl+Shift+S) to the editor, allowing "
+#~ "content to be saved as .txt or other file types.\n"
+#~ "- Added a setting to enable or disable addon sounds.\n"
+#~ "- Added comprehensive sound feedback to Information, Restore Backup, and "
+#~ "Replace All features for consistent audio cues.\n"
+#~ "- Fixed the \"Read in [Language]\" links in the documentation to "
+#~ "correctly open the HTML files instead of showing file not found errors or "
+#~ "opening raw source files.\n"
+#~ "- The editor buttons are now strictly ordered for better navigation: "
+#~ "Information -> Find -> Replace -> Save -> Save As -> Cancel."
+#~ msgstr ""
+#~ "- Додано функцію **Зберегти як** (Ctrl+Shift+S) до редактора, що дозволяє "
+#~ "зберігати вміст у форматі .txt або інших типах файлів.\n"
+#~ "- Додано налаштування для ввімкнення або вимкнення звуків додатка.\n"
+#~ "- Додано комплексний звуковий супровід до функцій «Інформація», "
+#~ "«Відновити резервну копію» та «Замінити все» для забезпечення послідовних "
+#~ "звукових сигналів.\n"
+#~ "- Виправлено посилання «Читати [Мову]» в документації, щоб правильно "
+#~ "відкривати HTML-файли замість відображення помилок про відсутність файлу "
+#~ "або відкриття необроблених вихідних файлів.\n"
+#~ "- Кнопки редактора тепер розташовані в строгому порядку для кращої "
+#~ "навігації: Інформація -> Знайти -> Замінити -> Зберегти -> Зберегти як -> "
+#~ "Скасувати."
