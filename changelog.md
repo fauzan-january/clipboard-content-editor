@@ -1,5 +1,10 @@
 # Clipboard Content Editor Changelog
 
+## Version 1.3.1
+
+- Updated the Ukrainian translation.
+- No other feature update.
+
 ## Version 1.3.0
 
 - Added full compatibility for NVDA 2026.1 (Python 64-bit).
